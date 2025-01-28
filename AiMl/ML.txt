@@ -1,0 +1,367 @@
+Data collection for ML
+    Methodical practice aimed at acquiring meaningful information to build a consistent and complete dataset for a specific purpose:
+    This stage requires the most amount of resources.
+    This process never ends since we always need new fresh data in order to improve and maintain existing ML models.
+
+    Data collection is often used with data ingestion and data integration.
+
+        Data collection:
+            It revolves around gathering raw data from various sources (Manual data entries, online surveys, extracting information from documents and DBs).
+
+        Data integration:
+            It converts raw data scattered across the system to a single schema.
+            Commonly the entire step is fully automated and consists of 3 main stages:
+
+            1. Data extraction
+            2. Data transformation
+            3. Data loading
+
+        Data ingestion:
+            It means taking data from several sources and moving it into a target system, without any transformations.
+    
+    Key assumptions:
+        Linearity: Relationship between variables must be linear.
+        Independence: The residuals (errors) are independent of each other.
+        Normality: Errors should follow a normal distribution.
+        
+    Data requirements:
+        1. Data type: structured, unstructured, or semi-structured.
+        2. Features: List the variables required for the model.
+                e.g. for house price predictions: numerical (area, price), categorical (location, property type).
+        3. Volume: Approximate number of records or size of the dataset.
+        4. Quality Criteria:
+            Completeness (No missing data).
+            Accuracy (Validate data).
+            Relevance (Aligned with project goal).
+
+    Data sources:
+        Detail the sources you will need:
+                e.g. Public dataset, APIs, Web scraping.
+
+    Data collection process:
+        1. Identify data source.
+        2. Fetch data:
+            Use tools or libraries for data retrieval:
+                e.g. APIs: Python's requests library.
+                     Web scraping: BeautifulSoup or Scrapy.
+
+        3. Data validation:
+            Verify data for:
+                Format consistency.
+                Missing or duplicate values.
+                Errors or anomalies.
+
+        4. Data storage:
+            Store data in an organized format:
+                e.g. Structured data - CSV, SQL.
+                     Unstructured data - Cloud storage.
+
+        5. Data labeling (If applicable):
+            Explain how data is labeled:
+            e.g. For supervised learning, data needs to be labeled.
+
+                 Method: Images were manually labeled using LabelImg.
+                 Tools: Prodigy for text data annotation.
+                 Crowdsourcing: Sentiment labels for text data were generated via Amazon Mechanical Turk.
+
+    Ethical Considerations:
+        Outline how you ensure ethical compliance:
+            Privacy: Anonymize personally identifiable information.
+            Regulations: Adhere to GDPR, HIPAA, or local data protection laws.
+            Consent: Obtain explicit permissions if using user data.
+    
+Simple Linear Regression:
+    Statistical method used to model the relationship between two variables (one independent variable (feature) and one dependent variable (target)).
+    It assumes that the relation is linear between two variables.
+
+    Equation:
+        y = mx + b
+
+        y = dependent variable (target).
+        x = independent variable (feature).
+        m = slope of the line (how much y changes with respect to x).
+        b = the y-intercept (the value of y when x = 0).
+
+    Working:
+        1. Data collection.
+        2. Data processing.
+        3. Training model:
+            Find the best value of m and b to minimize errors in predictions.
+            This is done by fitting the line to the data using the Least Squares method.
+        4. Predictions:
+            With optimal m and b, predict the value of y for a given x.
+        5. Model evaluation:
+            Evaluate model predictions by using metrics like Mean Squared Error (MSE) or R-squared.
+
+Multiple Linear Regression:
+    Used when we need to predict one dependent variable based on multiple independent variables.
+
+    Equation:
+        y = m1x1 + m2x2 + m3x3 + ...... + mnxn + B
+
+        Where:
+            y = dependent variable (target).
+            x1, x2 ... xn = Independent variables (Features).
+            m1, m2, ... mn = coefficients (slopes) for each feature.
+            b = y-intercept (value of y when all x = 0).
+
+        Key assumptions:
+            Linearity: There should be a linear relationship between the target variable and the independent variables.
+            Independence: The observations should be independent.
+            Homoscedasticity: The variance of the residuals (errors) should be constant across all levels of the independent variables.
+            No multicollinearity: The independent variables should not be highly correlated with each other.
+
+        Steps:
+            1. Data collection.
+            2. Data Processing.
+            3. Training model:
+                Fit the linear model to data using Ordinary Least Squares (OLS).
+            4. Predictions.
+            5. Evaluation:
+                Evaluate model using metrics like MSE, R-square.
+
+Underfitting:
+    Occurs when the model is too simple and cannot capture underlying patterns in data.
+    Means the model is too rigid or simple to learn properly from data, resulting in poor performance on training and unseen data.
+
+    Characteristics:
+        Too simple model: Cannot capture complex data.
+        High bias, low variance: Models consistently make errors on training and unseen data.
+        Poor accuracy.
+
+    Reasons:
+        Model is too simple.
+        Model has too few features (variables).
+        Model has not been trained enough.
+    
+Overfitting:
+    Occurs when the model learns training data too well, including noise and outliers (data that significantly differs from other data in the dataset).
+    The model essentially memorizes training data, which leads to high variance and low bias.
+    Model performs very well on training data, but struggles to generalize new data.
+
+    Characteristics:
+        Model is too complex.
+        Low bias, high variance.
+        Excellent accuracy on training data, but poor accuracy on test data.
+
+    Reasons:
+        Model is too complex.
+        Model is trained for too long.
+        Model has too many features.
+        Model is too flexible.
+
+Bias-Variance Trade-off:
+    Relationship between bias and variance:
+        Bias: The error introduced by approximating a real-world problem with a simplified model.
+        Variance: The error introduced by the model’s sensitivity to small fluctuations in the training set.
+
+    If trade-off is high, overfitting occurs.
+    If trade-off is low, underfitting occurs.
+
+Applications of Machine Learning:
+    Personalize user experience:
+        ML algorithms can personalize user experience by analyzing user behavior, preferences, and interactions.
+            e.g. Recommendation system, Content personalization.
+    
+    Chatbots and virtual assistants:
+        ML can create chatbots and virtual assistants that can understand and respond to user requests in real time.
+        These can be integrated into websites for better customer interaction, reducing the need for human intervention.
+            e.g. NLP (Natural Language Processing).
+
+    Search engine Optimization:
+        ML can be used in search engines to determine the ranking of search results.
+    
+    Fraud detection and security:
+        ML can be used to detect unusual behavior by learning historical data.
+            e.g. potential security breaches, phishing attempts, or unauthorized access.
+        ML is also used in web development for secure authentication systems.
+            e.g. Facial recognition, fingerprint scanning.
+
+    Dynamic pricing and A/B testing:
+        ML can be used to adjust prices based on factors like demand, competitor pricing, and user preferences.
+         ML algorithms can be used to analyze user interaction with different versions of a webpage. Based on this analysis,
+            developers can automatically adjust and improve the user interface (UI) and user experience (UX) to increase conversions.
+    
+    Web analysis:
+        ML models are applied to track and analyze user behavior on websites, identifying patterns such as which pages are most viewed, where users drop off, and how long they stay.
+            This data can help optimize the site’s structure and content.
+        ML algorithms predict future trends based on past user data, helping web developers to improve engagement and retention by making data-driven decisions.
+    
+    Image recognition and visual search:
+        ML can be used for image recognition, allowing users to search by uploading images.
+        ML can be used to automatically tag images with relevant keywords, helping to improve accessibility.
+    
+    Voice search and speech recognition:
+        Websites and web applications are increasingly using voice search, powered by ML models.
+        ML can be used to convert speech to text.
+    
+    Customer Segmentation and Targeted Marketing:
+        ML is used to segment users based on their behavior and preferences. 
+           This segmentation can help target specific groups of users with personalized content, offers, or recommendations.
+        Ads: Ads on websites are powered by ML models that predict which ads are most likely to be clicked on by different user segments, 
+            optimizing the ad experience for both users and advertisers.
+        
+    Predictive Maintenance:
+        For websites that host large applications, ML models can predict when certain components or services are likely to fail, allowing developers to address issues proactively and prevent downtime.
+
+    Web Scraping and Data Extraction:
+        ML can be used in web scraping tools to intelligently identify and extract relevant data from web pages, even when the structure of the site changes over time.
+        ML techniques help in extracting useful information from large volumes of web data, which can be used for analysis, research, or business insights.
+
+Naive Bayes Classifier:
+    Probabilistic classifier based on Bayes theorem, with the assumption that the features are conditionally independent given the class label.
+
+    Bayes theorem:
+        P(H∣E) = (P(E∣H)*P(H))/P(E)
+
+        Where:
+            P(H∣E) : posterior probability: the probability of the class H given the evidence E.
+            P(E∣H) : likelihood: the probability of observing the evidence E given the class H.
+            P(H) : prior probability: the probability of the class H occurring in general.
+            P(E) : evidence: the total probability of observing the evidence.
+
+    Naive assumption:
+        All features are independent of each other, given the class label. This simplifies the computation of P(E∣H).
+
+    Types of Naive Bayes Classifier:
+        1. Gaussian Naive Bayes:
+            Assumes that features follow a normal (Gaussian) distribution.
+            Useful when features are continuous and have a bell-shaped distribution.
+        
+        2. Multinomial Naive Bayes:
+            Works when features are discrete and can represent counts.
+            Commonly used for document classification and text data.
+        
+        3. Bernoulli Naive Bayes:
+            Assumes binary and boolean features.
+            Used when data consists of binary features (e.g. text data).
+
+    Applications:
+        Spam Detection: Classifies emails as spam or not spam based on word probabilities.
+        Sentiment Analysis: Determines if a text (e.g., tweet, review) expresses positive, negative, or neutral sentiment.
+        Document Classification: Categorizes documents into topics like sports, politics, etc.
+        Language Detection: Identifies the language of a given text (e.g., English, French).
+        Medical Diagnosis: Predicts diseases based on symptoms or medical tests.
+        Customer Churn Prediction: Predicts whether a customer will leave a service (e.g., telecom or subscription).
+        Recommendation Systems: Suggests products or movies based on user preferences.
+        Fraud Detection: Identifies fraudulent transactions using historical data.
+        Text-to-Speech/Speech Recognition: Converts speech to text or understands spoken commands.
+        Bioinformatics: Classifies genes, proteins, or other biological data.
+        Image Classification: Classifies images into categories like animals, objects, etc.
+        Market Basket Analysis: Predicts product purchases based on items in the shopping cart.
+
+Linear Regression vs Logistic Regression:
+    Purpose:
+        Linear: Used for predicting continuous numeric values.
+        Logistic: Used for binary classification tasks.
+
+    Output:
+        Linear: It predicts real values that can range from negative to positive infinity.
+        Logistic: Outputs a probability between 0 and 1, which can be mapped to a binary outcome.
+
+    Method of estimation:
+        Linear: Uses Ordinary Least Squares (OLS) to minimize the sum of squared residuals.
+        Logistic: Uses Maximum Likelihood Estimation (MLE) to find the coefficients that maximize the likelihood of the observed data.
+
+    Cost Function:
+        Linear: The cost function is the Mean Squared Error (MSE).
+        Logistic: The cost function is the Log-Loss (Binary Cross-Entropy).
+
+    Assumptions:
+        Linear: Assumes a linear relationship between independent and dependent variables. Assumes errors are normally distributed.
+        Logistic: Models the log-odds of the dependent variable. Assumes that the data follows a logistic distribution.
+
+    Model interpretation:
+        Linear: How much the dependent variable will change with one unit change in the independent variable.
+        Logistic: The coefficients represent the log-odds of the outcome, 
+                which means how much the log of the odds ratio changes with a one-unit change in the independent variable.
+
+    Use case:
+        Linear: Predicting continuous outcomes: sales forecasting, temperature prediction, price prediction, etc.
+        Logistic: Binary classification tasks: spam detection, disease prediction, customer churn prediction, sentiment analysis, etc.
+
+    Decision boundary:
+        Linear: Straight line (Or hyperplane in multi-dimensional).
+        Logistic: The decision boundary is non-linear due to the sigmoid function, which produces a probability output.
+
+Decision Tree Classification Algorithm:
+    Supervised algorithm used for classification and regression tasks.
+    In classification, it divides the data into asking a series of 'yes' and 'no' questions.
+
+    It's like a flowchart where:
+        Node: represents feature or attribute.
+        Branches: represents decision rules or outcomes.
+        Leaf nodes: represents final classification or decision.
+
+    Working:
+        1. Root node:
+            It contains the entire dataset. It decides the best feature to split data based on a specific criterion.
+        
+        2. Splitting:
+            At each step, it selects the best feature to split data into smaller subsets.
+        
+        3. Stopping criteria:
+            Splitting stops when:
+                All samples in the node belong to the same class.
+                A pre-set stopping condition is reached.
+            
+        4. Prediction:
+            For a new input, the tree "traverses" from the root node through the branches, 
+                following the decision rules, and ends at a leaf node, which gives the predicted class.
+
+    Advantages:
+        Easy to understand.
+        Handles Both Numeric and Categorical Data.
+        No Feature Scaling Required.
+        Good for Small to Medium Datasets.
+
+    Disadvantages:
+        Overfitting: Without pruning, decision trees tend to overfit.
+        Instability: A small change in data can result in a completely different tree.
+        Bias Toward Features with More Levels: Can favor attributes with many unique values.
+
+Random forest:
+    Ensemble learning method that combines multiple decision trees to create a "forest" of trees.
+    Supervised ML used for classification and regression tasks.
+
+    Working:
+        Bootstrapping:
+            Random forest uses bagging (Bootstrap aggregating).
+            It randomly selects subsets of the training data, with replacement, to create different samples from the dataset.
+
+        Building multiple trees:
+            For each subset of data, a decision tree is built independently.
+            Each tree is trained on a different subset of data.
+        
+        Random feature selection:
+            When building each tree, not all features are considered. A random subset of features is selected for each split,
+                which makes each tree different from others.
+        
+        Voting:
+            Once all trees are built,
+                for classifications, each tree 'votes' for a class label. The class that gets the most votes from all trees is selected for final predictions.
+                for regression, the prediction is the average of the predictions made by trees.
+        
+    Why use random forest:
+        Reduces Overfitting: Random Forest can handle the overfitting problem faced by decision trees because it uses the ensemble of multiple trees.
+        Handles Missing Data: It can maintain accuracy even if some data points are missing.
+        Feature Importance: Random Forest can help identify the most important features for predictions.
+        Versatile: It works well with both numerical and categorical data.
+
+    Advantages:
+        Reduces Overfitting: By averaging multiple trees, it reduces variance and prevents overfitting.
+        Handles Missing Data: Can handle missing values by maintaining accuracy.
+        Works Well with Large Datasets: It works well even with high-dimensional datasets.
+        Feature Importance: Provides insights into the most important features for prediction.
+
+    Disadvantages:
+        Complexity: Random Forest can be computationally expensive, especially with large datasets and many trees.
+        Interpretability: While decision trees are easy to interpret, Random Forest, being an ensemble of many trees, is harder to interpret.
+        Slower Prediction: Making predictions can be slower as it requires passing the data through many trees.
+
+
+
+
+
+
+

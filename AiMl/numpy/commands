@@ -1,0 +1,43 @@
+np.array() – Creates a NumPy array.
+np.arange() – Creates an array with a range of values.
+np.zeros() – Creates an array of zeros.
+np.ones() – Creates an array of ones.
+np.full() – Creates an array with a specified value.
+np.eye() – Creates an identity matrix.
+np.random.rand() – Generates an array of random values between 0 and 1.
+np.random.randn() – Generates random values from a standard normal distribution.
+np.random.randint() – Generates random integers within a specified range.
+np.reshape() – Reshapes an array to a new shape.
+np.ravel() – Flattens a multi-dimensional array to 1D.
+np.transpose() – Transposes an array (flips rows and columns).
+np.concatenate() – Concatenates two or more arrays along a specified axis.
+np.vstack() – Stacks arrays vertically (row-wise).
+np.hstack() – Stacks arrays horizontally (column-wise).
+np.split() – Splits an array into multiple sub-arrays.
+np.add() – Adds two arrays element-wise.
+np.subtract() – Subtracts two arrays element-wise.
+np.multiply() – Multiplies two arrays element-wise.
+np.divide() – Divides two arrays element-wise.
+np.dot() – Calculates the dot product of two arrays.
+np.cross() – Computes the cross product of two vectors.
+np.linalg.inv() – Computes the inverse of a matrix.
+np.linalg.det() – Computes the determinant of a matrix.
+np.linalg.eig() – Computes the eigenvalues and eigenvectors of a matrix.
+np.max() – Returns the maximum value in an array.
+np.min() – Returns the minimum value in an array.
+np.mean() – Returns the mean value of an array.
+np.median() – Returns the median value of an array.
+np.std() – Returns the standard deviation of an array.
+np.var() – Returns the variance of an array.
+np.sum() – Returns the sum of all elements in an array.
+np.prod() – Returns the product of all elements in an array.
+np.cumsum() – Returns the cumulative sum of an array.
+np.cumprod() – Returns the cumulative product of an array.
+np.argmax() – Returns the index of the maximum value in an array.
+np.argmin() – Returns the index of the minimum value in an array.
+np.unique() – Returns the unique elements of an array.
+np.where() – Returns elements chosen from two arrays based on a condition.
+np.isnull() – Checks if an array has any null (NaN) values.
+np.isnan() – Checks if an array has NaN values.
+np.array_equal() – Compares two arrays and returns True if they are equal.
+np.set_printoptions() – Sets the print options for NumPy arrays (like precision).

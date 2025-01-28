@@ -1,0 +1,39 @@
+pd.read_csv() - Reads a CSV file and loads it into a DataFrame.
+df.head() - Displays the first 5 rows of the DataFrame.
+df.tail() - Displays the last 5 rows of the DataFrame.
+df.info() - Provides a summary of the DataFrame including column names, data types, and non-null values.
+df.describe() - Generates summary statistics (count, mean, std, min, max, etc.) for numerical columns.
+df.columns - Lists the column names of the DataFrame.
+df.shape - Returns the dimensions (rows, columns) of the DataFrame.
+df.dtypes - Returns the data types of each column in the DataFrame.
+df.isnull() - Checks for missing values (returns a boolean DataFrame).
+df.notnull() - Checks for non-missing values (returns a boolean DataFrame).
+df.dropna() - Removes rows with missing values.
+df.fillna() - Fills missing values with a specified value.
+df.drop() - Drops specified rows or columns from the DataFrame.
+df.rename() - Renames the columns or index of the DataFrame.
+df.loc[] - Accesses a group of rows and columns by labels.
+df.iloc[] - Accesses rows and columns by their integer position.
+df.groupby() - Groups data based on a specified column(s) and performs aggregation.
+df.sort_values() - Sorts the DataFrame by one or more columns.
+df.sort_index() - Sorts the DataFrame by its index.
+df.set_index() - Sets a column as the index of the DataFrame.
+df.reset_index() - Resets the index of the DataFrame to the default integer index.
+df.corr() - Computes pairwise correlation of columns.
+df.merge() - Merges two DataFrames based on common columns or indices (similar to SQL join).
+df.append() - Appends rows from another DataFrame to the existing DataFrame.
+df.concat() - Concatenates two or more DataFrames along a particular axis.
+df.pivot() - Reshapes data by pivoting a DataFrame based on column values.
+df.melt() - Unpivots a DataFrame from wide to long format.
+df.apply() - Applies a function along an axis (row-wise or column-wise).
+df.applymap() - Applies a function elementwise to the entire DataFrame.
+df.value_counts() - Counts the unique values in a column.
+df.unique() - Returns unique values in a column.
+df.nunique() - Returns the count of unique values in each column.
+df.sample() - Randomly samples rows from the DataFrame.
+df.astype() - Converts a column to a specific data type.
+df.query() - Filters rows based on a condition (expressed as a string).
+df.to_csv() - Saves the DataFrame to a CSV file.
+df.to_excel() - Saves the DataFrame to an Excel file.
+df.to_dict() - Converts the DataFrame to a dictionary.
+df.to_numpy() - Converts the DataFrame to a NumPy array.

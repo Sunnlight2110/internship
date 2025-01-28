@@ -1,0 +1,41 @@
+1.Basics:
+Series and data frame
+Indexing
+Inspecting data
+Selecting rows/columns
+
+2.Importing, Exporting & File Handling:
+Reading data: pd.read_csv(), pd.read_excel(), pd.read_json()
+Writing data: df.to_csv(), df.to_excel()
+Handling dates: pd.to_datetime()
+
+3. Data Cleaning:
+Handle missing values: df.isnull(), df.dropna(), df.fillna()
+Remove duplicates: df.drop_duplicates()
+Convert data types: df.astype()
+
+4. Feature Engineering:
+One-Hot Encoding: pd.get_dummies()
+Label Encoding
+Creating new features (e.g., df['AgeGroup'] = df['Age'] // 10)
+Scaling features: scikit-learn's StandardScaler, MinMaxScaler
+
+5. Data Manipulation & Transformation:
+Merging data: pd.merge()
+Concatenating: pd.concat()
+Grouping data: groupby()
+Pivot tables: pivot_table()
+
+6. Data Visualization:
+Basic plotting: df.plot()
+Advanced visualization with matplotlib & seaborn
+Correlation heatmap: sns.heatmap()
+
+7. Data Splitting for Machine Learning:
+Train-test split: train_test_split()
+Feature and target selection (X, y)
+
+8. Practice Projects:
+Titanic Survival Prediction (Classification)
+House Price Prediction (Regression)
+Customer Segmentation (Clustering)

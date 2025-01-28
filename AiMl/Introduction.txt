@@ -1,0 +1,545 @@
+Introduction to Machine Learning
+    ML is a type of AI.
+    Enables computers to learn and make decisions without being explicitly programmed.
+    Involves feeding data into algorithms that can identify patterns and make predictions on new data.
+
+    Usage:
+        Image recognition, speech recognition, natural language processing, recommender systems, etc.
+
+Types of Machine Learning
+    Machine Learning is classified into 4 major categories depending on the nature of learning:
+    
+        1. Supervised Learning: maps based on input-output pairs
+        2. Unsupervised Learning: used to make conclusions from datasets with input data but no labeled responses.
+        3. Reinforcement Learning: an agent learns how to behave in an environment by actions and feedback.
+        4. Semi-Supervised Learning: combines small numbers of labeled data and large numbers of unlabeled data
+    
+    Machine Learning is further classified based on the required output:
+        1. Classification: inputs are divided into three or more classes
+        2. Regression: outputs are continuous rather than discrete
+        
+Features of Machine Learning
+    1. Predictive modeling: creates models to forecast future events, e.g., determining the risk of loan default, weather forecast, etc.
+    2. Automation: automates the process of finding patterns in data, requiring less human involvement and acquiring more precise and effective data.
+    3. Scalability: ML can be trained to handle massive amounts of data, resulting in decisions based on information gathered from such data.
+    4. Generalization: ML can determine broad patterns in existing data that can be used to analyze new, unexplored data.
+    5. Adaptiveness: ML can be trained to learn and adapt, resulting in enhanced performance and precision.
+
+Supervised Learning
+    In this, ML learns to map an input to an output based on labeled pairs.
+
+    Working:
+        Training data:
+            The model is provided with a training dataset that includes input data and corresponding output data.
+        
+        Learning process:
+            The algorithm processes the training data, learning the relationship between input features and output labels.
+            This is achieved by adjusting the model's parameters to minimize the difference between predictions and actual labels.
+
+        Testing:
+            After training, the model is evaluated for its performance and accuracy.
+            Then the model's performance is optimized by adjusting parameters and using techniques like cross-validation to balance bias and variance.
+            This ensures that the model generalizes well to new and unseen data.
+
+    Practical Examples:
+        Fraud detection
+        Parkinson's disease prediction
+        Customer churn prediction
+        Cancer cell classification
+        Stock price prediction
+
+    Classification problems: Its goal is to predict categories or labels for new data.
+            e.g., Email spam detection, Image recognition
+
+        Types of classifications:
+            i. Binary classification: only two possible classes (yes or no, True or False)
+                    e.g., Will the customer purchase the product or not?
+            ii. Multi-class classification: more than two possible classes
+                    e.g., Identifying types of things
+            iii. Multi-label classification: Each input can be assigned to multiple labels
+                    e.g., Tagging a blog post with multiple tags
+
+        Classification algorithms:
+            Logistic Regression (for binary classification)
+            Decision Trees
+            Random Forest
+            Support Vector Machines (SVM)
+            K-Nearest Neighbors (KNN)
+            Naive Bayes
+            Neural Networks (for complex tasks)
+    
+    Regression problems: Its goal is to predict continuous values.
+            e.g., House price prediction, Stock market forecasting, Temperature forecasting
+
+        Types of regressions:
+            i. Linear regression: it assumes a linear relationship between input variables and target.
+                    e.g., Predicting a person’s weight based on their height
+            ii. Polynomial regression: an extended version of linear regression that fits data into a polynomial curve, allowing more flexible data.
+            iii. Ridge regression: A variation of linear regression that includes regularization to prevent overfitting.
+            iv. Lasso regression: A regularized regression that shrinks some coefficients to zero, effectively performing feature selection
+
+        Regression algorithms:
+            Linear Regression
+            Ridge and Lasso Regression
+            Decision Trees (for regression tasks)
+            Random Forest Regressor
+            Support Vector Regression (SVR)
+            K-Nearest Neighbors (KNN) for Regression
+            Neural Networks (for complex tasks)
+
+    Source: https://chatgpt.com/c/6784a4a3-7f9c-8012-8910-b8a8b3e23a38, https://chatgpt.com/c/6784a4a3-7f9c-8012-8910-b8a8b3e23a38
+
+Unsupervised Learning
+    In this, ML learns to map data in input-output pairs but without labels.
+
+    Clustering: Its goal is to group similar data points together into clusters.
+            e.g., Customer segmentation, image segmentation, market basket analysis
+
+    Working:
+        Unsupervised learning works by analyzing unlabeled data to identify patterns and relationships.
+        The data is not labeled with any predefined categories or outcomes, so the algorithm must find these patterns and relationships on its own.
+        This can be a challenging task, but it can also be very rewarding, as it can reveal insights into the data that would not be apparent from a labeled dataset.
+
+    Types of Clustering algorithms:
+        K-means Clustering
+        Hierarchical Clustering
+        DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
+        Gaussian Mixture Model
+        Affinity Propagation
+
+    Dimensionality reduction algorithm: It reduces the number of features (or dimensions) in a dataset while preserving important information.
+            e.g., Reducing dimensionality of data for better visualization, Noise reduction, Feature selection for building more efficient ML models
+
+        Types of Dimensionality reduction:
+        Principal Component Analysis (PCA)
+        t-SNE (t-distributed Stochastic Neighbor Embedding)
+        Autoencoders
+        Linear Discriminant Analysis (LDA)
+
+    Anomaly detection algorithm: Identifies data points that deviate significantly from the normal patterns in the data. These points are called outliers or anomalies.
+            e.g., Fraud detection in financial transactions, Intrusion detection in network security, Identifying defective items in manufacturing processes
+
+        Types of Anomaly detection algorithms:
+            Isolation Forest
+            One-class SVM (Support Vector Machine)
+            Local Outlier Factor
+            K-means
+            Elliptic Envelope
+
+    Association rule learning: It helps to find interesting relationships in large databases. Generally used to discover associations between items in a dataset.
+            e.g., Market basket analysis, Recommendation systems, Cross-selling products in retail
+
+        Working:
+            RL operates on the principle of learning optimal behavior through trial and error. 
+            The agent takes actions within the environment, receives rewards or penalties, and adjusts its behavior to maximize the cumulative reward.
+
+        Types of Association rule learning:
+            Apriori algorithm
+            Eclat algorithm
+            FP-growth (Frequent Pattern Growth)
+
+    Self-Organizing Maps: It maps data into a lower-dimensional grid where similar data points are grouped together.
+            e.g., Visualizing high-dimensional data in 2D or 3D, Clustering and organizing large datasets, Identifying patterns and features in complex data
+            
+Reinforcement Learning
+    In reinforcement learning, an agent learns to make decisions by interacting with the environment to maximize rewards. RL learns by trial and error, guided by rewards and penalties.
+            e.g., Robotics, gaming, Autonomous vehicles, Industrial automation
+
+    Key Components:
+        Agent: Decision maker
+        Environment: The external system with which the agent interacts
+        State: A representation of the environment at a specific time
+        Actions: Choices that the agent can make at any given state
+        Rewards: A numerical feedback signal that indicates the success of an action in the environment
+        Policy: A strategy that maps states to actions. The agent follows the policy to decide the next action.
+        Value function: Estimates the future cumulative reward for being in a state or taking an action
+        Model: A representation of the environment, used in some RL algorithms to simulate outcomes
+        
+    Types of RL:
+        Model-free algorithms
+        Model-based algorithms
+        Policy-based algorithms
+        Actor-Critic algorithm
+
+Machine Learning Life Cycle
+    The machine learning life cycle consists of 6 steps that provide structure to machine learning projects.
+    These steps provide more suitable, cost-effective, and quality AI products.
+
+    1. Planning
+        It involves assessing the scope, success metrics, and feasibility of the ML application. 
+        You need to understand the business and how to use machine learning to improve the current process.
+        You also need to understand the cost-benefit analysis and how you will ship the solution in multiple phases.
+
+        Finally, you need to create a feasibility report which includes:
+            Availability of data
+            Applicability
+            Legal Constraints
+            Robustness and Scalability
+            Expandability
+            Availability of resources
+
+    2. Data preparation:
+        It is further divided into 4 parts
+            1. Data collation and labeling:
+                Determining data source: (i.e. internal data, open source, buying)
+                After collection, labeling data.
+
+                This stage requires most resources (i.e. Time, Money, professionals, legal agreements)
+
+            2. Data cleaning:
+                Clean data by imputing clean values, analyzing wrong label data, removing outliers, reducing noise.
+                Use data pipeline to automate this process.
+
+            3. Data processing:
+                This involves feature selection, dealing with imbalanced classes, feature engineering, data augmentation, and normalizing and scaling data.
+
+            4. Data management:
+                We figure out data storage solutions, data versioning, data modeling, transformation pipelines, and feature stores.
+
+    3. Model engineering:
+        In this phase, using all info gathered so far, we build and train machine learning models.
+
+            1. Build effective model architecture by doing extensive research.
+            2. Defining model metrics
+            3. Training and validating the model on training and validation datasets.
+            4. Tracking experiments, metadata, features, code changes, and machine learning pipelines
+            5. Performing model comparison and ensemble
+            6. Interpreting results by incorporating language experiments
+
+        We will be focusing on model architecture, code quality, machine learning experiments, model training, and ensembling. 
+
+        The features, hyperparameter, ML experiments, model architecture, development environment, and metadata are stored and versioned for reproducibility.
+
+    4. Model evaluation:
+        In this phase, we set various metrics.
+
+        First, test our model on the test dataset and make sure we involve subject matter experts to identify errors in predictions.
+        Also, ensure that industrial, ethical, and legal frameworks are followed for building AI solutions.
+        We test our model for robustness on random and real-world data, making sure that the model infers fast enough to bring value.
+        Compare this success to planned metrics and decide whether to deploy the model or not.
+
+    5. Model deployment:
+        We deploy the ML model to the current system.
+        Generally, the model can be deployed on the cloud and local server, web browser, packaged as software, and edge devices.
+        After that, API, web app, plugins, or dashboards can be used to access predictions.
+        In this phase, we define interface hardware, and make sure to have enough RAM, storage, and computing power to provide the desired result.
+    
+    6. Monitoring and maintenance:
+        After deployment, constant monitoring is required and the system should be improved from time to time.
+        There will be model metrics, hardware, and software performance should be monitored.
+        The monitoring will be completely automatic and professionals are notified about anomalies, reduced model, and system performance.
+        
+What is a dataset?
+    A dataset is a set of data grouped into a collection with which developers can work to meet their goals.
+
+    In a dataset, rows represent data points and columns represent features of the dataset.
+    They are mostly used in machine learning and business.
+
+    Properties of a dataset:
+        Center of data: This refers to the “middle” value of the data, often measured by mean, median, or mode. 
+            It helps understand where most of the data points are concentrated.
+        Skewness of data: This indicates how symmetrical the data distribution is. A perfectly symmetrical distribution (like a normal distribution) has a skewness of 0.
+            Positive skewness means the data is clustered towards the left, while negative skewness means it’s clustered towards the right.
+        Spread among data members: This describes how much the data points vary from the center. 
+            Common measures include standard deviation or variance, which quantify how far individual points deviate from the average.
+        Presence of outliers: These are data points that fall significantly outside the overall pattern. 
+            Identifying outliers can be important as they might influence analysis results and require further investigation.
+        Correlation among the data: This refers to the strength and direction of relationships between different variables in the dataset.
+            A positive correlation indicates values in one variable tend to increase as the other does, while a negative correlation suggests they move in opposite directions.
+            No correlation means there’s no linear relationship between the variables.
+        Type of probability distribution that the data follows:
+            Understanding the distribution (e.g., normal, uniform, binomial) helps us predict how likely it is to find certain values within the data and choose appropriate statistical methods for analysis.
+
+    Features of a dataset:
+        Numerical features: 
+        Categorical features
+        Metadata: includes a general description of the database
+        Size of data: refers to the number of entities and features it contains in the file containing the dataset.
+        Formatting of data: ensures that the data is structured correctly for analysis
+        Target variables: The variable or feature that the model is designed to predict. 
+        Data entities: Refers to the individual records or entries in the dataset.
+
+Types of datasets
+    There are various types of datasets.
+        Numerical: Includes numerical data points that can be solved with equations.
+        Categorical: These include categories
+        Web dataset: This dataset is created by APIs using HTTP and populating them with values for data analysis (Mostly JSON)
+        Time series: This is a dataset between a certain time period
+        Image: Includes datasets consisting of images
+        Ordered: All info is ordered in rank
+        Partitioned: Data points are separated into different members or partitions
+        File-based dataset: These datasets are stored in files
+        Bivariate: 2 classes or features are directly correlated to each other.
+        Multivariate: 2 or more classes are directly correlated to each other.
+        
+Data Pre-processing
+    It is a technique and method to convert raw data into a usable format for analysis and modeling.
+    
+    Steps of data pre-processing:
+        Data cleaning: Identifying and correcting errors for inconsistencies (i.e. missing values, outliers, duplicate values)
+        Data integration: Combine data from multiple sources to create unified data. It requires handling data with different formats, structures, and semantics.
+        Data transformation: Converts data into a suitable format for analysis. Common techniques include normalization, standardization, and discretization.
+        Data reduction: This involves reducing the size of databases while preserving important information.
+        Data discretization: It involves dividing continuous data into discrete categories or intervals. It is often used in data mining and machine learning algorithms.
+        Data normalization: Scaling data to a common range, such as between 0 and 1 or -1 and 1. Often used to handle data with different units and scales.
+
+Difference between Supervised and Unsupervised Learning
+    1. Data type: Supervised learning - labeled data (input-output pairs) Unsupervised learning - Unlabeled data (only inputs)
+    2. Goal: Supervised - Learn mapping from inputs and outputs  Unsupervised - Find patterns or structure in data
+    3. Output: Predict specific labels or values  Unsupervised - Group data into clusters or reduce dimensions
+    4. Common tasks: Supervised - Classification, regression  Unsupervised - Clustering, Anomaly detection, Dimensionality reduction
+
+What is the Classification Algorithm?
+    It is a supervised machine learning model where the model tries to predict the correct label of a given data.
+    The model is trained fully on the training data, and then it is evaluated on test data.
+
+Types of ML Classification Algorithms:
+    There are two types of classification learners:
+        1. Eager learners:
+            First build a model from the training dataset before making predictions.
+            Spends more time during the training process, because of their eagerness to have a better generalization during the training from learning the weights.
+            Requires less time to make predictions
+
+                e.g. logistic regression
+                     Support Vector machine 
+                     Decision Tree
+                     Artificial neural networks
+
+        2. Lazy learners (Instance-based learners):
+            Do not create any models.
+            Memorize training data and each time there is a need to make predictions, they search for the nearest neighbor from the training data.
+            Very slow during predictions
+
+                e.g. K-Nearest neighbor
+                     Case-based reasoning
+
+Logistic Regression
+    Used for binary classifications.
+    Uses sigmoid function, Takes input as independent variables and produces a probability value between 0 and 1.
+    Predicts the output of a categorical dependent variable, the outcome must be categorical or discrete value.
+    Instead of fitting a regression line, we fit an "S" shaped logistic function, which predicts a max of two values (0,1)
+
+    Sigmoid function:
+        σ(x)= 1/1+e^1-x
+
+        Mathematical function used to map the predicted values of probabilities
+        Maps any real value into another value within 0-1.
+        Value cannot go beyond 0 to 1, so it curves like "S" form.
+
+    Types of logistic regression:
+        Binomial: only two possible types of dependent variables (0,1)
+        Multinomial: 3 or more possible unordered types of dependent variables
+        Ordinal: 3 or more possible ordered type of dependent variables
+
+    Assumptions of Logistic regression
+        Independent observation:
+                 Each observation is independent of each other, no correlations between any input variables.
+        Binary dependent variables: 
+                Dependent variables must be binary or dichotomous (Can take only 2 variables)
+        Linearity relation between independent variables and log odds:
+                Relation between independent variables and log odds of dependent variables should be linear
+        No outliers:
+                No outliers in the dataset are allowed
+        Large sample size:
+                The sample size is sufficiently large
+
+        [ odds = probability of event occurring(p) / probability of event not occurring(1-p)]
+        [log odds = ln(odds)]
+
+What is the K-Nearest Neighbor
+        Used for classification or regression tasks.
+        Based on the idea - finding the nearest data point to make a prediction about the target variable
+
+        Working:
+            Given a data point, find K nearest data points based on its distance matrix
+
+            Classification:
+                Classify the point based on its majority labels
+            Regression:
+                Calculate the average of target values
+
+            Steps:
+                1. Choose the number of Neighbors
+
+                2. Calculate the distance between the input point and all points in the dataset:
+                    Matrix = Euclidean distance, Manhattan, Minkowski 
+                    
+                    Euclidean distance = ((x2-x1)^2 + (y2-y1)^2)^1/2
+
+                    Manhattan distance = |x2-x1| + |y2-y1|
+
+                    Minkowski distance = ( n
+                                            ∑  |x2i-x1i|^p )^1/p
+                                            i=1
+
+                3. Identify K nearest neighbors (Pick k smallest values)
+                
+                4. Make predictions:
+                    Classification:
+                        New data point is classified based on the majority classes among K nearest neighbors
+                                e.g. K = 3 and neighbor classes are (class A, class B, class C), then the data point is class A because it appears more frequently
+
+                    Regression:
+                        Prediction is the mean (average) of K nearest values
+                                e.g. neighbors have values of [5,8,7] predicted value = (5+8+7)/3 = 6.67
+
+                5. Choosing the value of K:
+                    Most critical step
+
+                    Small value may lead to overfitting, model becomes sensitive to noise
+                    Large value may prevent overfitting, may introduce bias (error introduced by simplifying assumptions made by the model), making the model less sensitive to small patterns
+
+                    A typical approach is to experiment with different values of K and use cross-validation to find the optimal K.
+
+Advantages and Disadvantages of KNN Algorithm
+    Advantages:
+        Simple and intuitive: Easy to understand and implement, requiring minimal parameters
+        No training phase: Does not require the model to train in advance
+        Works with multi-class classification: Used for both (binary, multi-class classification)
+        Versatile: Can be used for both (classification, regression)
+
+    Disadvantages:
+        Computationally expensive: For large datasets, calculating distance for a new data point can be slow
+        Memory intensive: It holds the entire dataset, with large datasets, can use up a lot of memory
+        Sensitive to irrelevant features: It relies on distance matrix, irrelevant features can distort the distance
+        Imbalanced classes: Performs poorly when classes are imbalanced
+
+What is SVM Algorithm
+    SVM = Support Vector Machine
+    Used for linear, non-linear classification, regression, outlier detection 
+    Focus on finding the maximum separating hyperplane between different classes in the target feature
+    Robust for both (binary, multi-class classification)
+    Objective: Find the optimal hyperplane in N-dimensional space that can effectively separate different data points into different classes in the feature space.
+    Ensures that the margin between the closest points of different classes (support vectors) is maximized. 
+
+    Used for:
+        Text classification, Image classification, spam detection, handwriting detection, face detection, anomaly detection
+
+    Key concepts:
+        Hyperplane: Decision boundary that separates data points into different classes
+        Margin: Distance between the hyperplane and the nearest data point from either class
+        Support vectors: Data points that lie closest to the hyperplane, used to define the margin
+        Linear vs non-linear SVM:
+            Linear: Used when data is linearly separable
+            Non-linear: Used when data is not linearly separable, a kernel trick is applied to map the data to higher dimensional space
+        Kernel trick:
+            Kernel function transforms data into higher dimensional space where linear separation is possible
+            Linear kernel: k(x,x') = x.x'
+            Polynomial kernel: k(x,x') = (x.x'+1)^d
+            Radial basis kernel: k(x,x') = exp(−γ||x-x'||^2)
+            Sigmoid kernel: k(x,x') = tanh(αx⋅x′+c)
+
+    Steps of SVM classification:
+        1. Train model:
+            Given a set of training data, SVM constructs the optimal hyperplane that best separates classes
+        2. Optimization problems:
+            The process of finding the best hyperplane is formulated as a quadratic equation.
+            It tries to maximize the margin while minimizing classification errors
+        3. Predictions:
+            Once the model is trained, it predicts the class of new data by determining which side of the hyperplane it lies on.
+
+    Advantages:
+        Effective in high dimensions
+        Works well with small datasets
+        Model can make complex decision boundaries with the kernel trick
+
+    Disadvantages:
+        Not suitable for large datasets
+        Sensitive to choice of kernel and hyperparameter
+        Can perform poorly if data is noisy or contains overlapping classes
+    
+Types of SVM
+    1. Binary SVM:
+        Algorithm to classify data into two distinct classes
+        Goal = find a hyperplane to separate data points of two different classes with the maximum margin.
+    
+    Steps involved in binary SVM:
+        Find optimal hyperplane:
+            Construct a hyperplane that separates two classes with maximum margin.
+        
+        Maximize margin:
+            Margin is the distance between the hyperplane and the nearest data point
+            SVM tries to maximize the margin to ensure that the model generalizes well with unseen data
+        
+        Support vectors:
+            Data points that lie closest to the decision boundary.
+            The position of the hyperplane is determined entirely by support vectors.
+        
+        Decision boundary:
+            After the model is trained, it classifies new points by determining which side of the hyperplane they lie on.
+
+        Working:
+            Suppose class1: y = +1
+                    class2: y = -1
+
+                    Equation for finding hyperplane in n dimension is:
+                        w⋅x+b=0
+                        
+                        where   w = normal vector to hyperplane
+                                x = the feature vector of a data point
+                                b = the bias term, determining the position of the hyperplane relative to the origin
+                        The objective of SVM is to find w and b that maximize the margin between two classes
+
+                    The objective function:
+
+                        maximize 2/||w||
+
+                        subject to yi(w⋅xi+b)≥1 ∀i
+
+                    Soft margin:
+                        Sometimes data cannot be separated by a hyperplane.
+                        Soft margin allows misclassifications to ensure that the model generalizes better to unseen data
+
+                                                      n
+                                Minimize (||w||^2)/2+C∑ξi
+                                                      i
+
+                        ξi are slack variables that allow misclassification of some points
+                        C is a regularization parameter that controls the trade-off between maximizing margin and minimizing classification errors
+
+        Advantages:
+            High accuracy in classification tasks
+            Works well for problems with many features
+            It aims to find the most general decision boundary, which helps with overfitting
+
+        Disadvantages:
+            For large databases, training time will be long
+            Performance heavily depends on the choice of kernel
+
+    2. Multi-class SVM:
+        Need to classify data into more than two classes
+
+        Approach to multi-class SVM:
+            1. One vs Rest (OVR):
+                Most commonly used approach
+                For each class, a separate binary classifier is trained to distinguish that class from others.
+                Each classifier assigns data to their classes
+                The class that produces the highest confidence is chosen as the final prediction.
+
+            2. One vs One (OVO):
+                Binary classifier is trained for each pair of classes
+                If there are K classes, (k(k-1))/2 classifiers are created.
+                During prediction, a majority voting system is used. Each classifier votes for a class, and the class that is most voted is chosen as the final prediction.
+
+        Example of workflow of multi-class SVM:
+            1. Data preparation:
+                Dataset needs to have more than 2 classes
+
+            2. Model training:
+                For one vs rest, each class will have its own classifier, distinguished from each other.
+                For one vs one, each pair of classes has its own classifier
+
+            3. Prediction:
+                One vs rest: Highest score wins
+                One vs One: Most votes win
+
+
+        Advantages:
+            One vs rest approach scales well with a large number of classes
+            Ability to create complex decision boundaries can be very effective even with a large number of classes
+            With a strong focus on margin, it generalizes well with unseen data
+
+        Disadvantages:
+            With one vs one, the number of classifiers grows quadratically with the number of classes
+            The number of classifiers and complexity of each classifier can require a significant amount of memory
+
