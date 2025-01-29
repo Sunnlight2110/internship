@@ -1,68 +1,38 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import statsmodels.api as sm
+from sklearn.model_selection import train_test_split
 
-# Define the machine learning models and their attributes for the spider web chart
-models = [
-    "Linear Regression", "Logistic Regression", "Decision Trees", "Random Forests", 
-    "SVM", "KNN", "Naive Bayes", "K-Means", "Hierarchical Clustering", 
-    "PCA", "Neural Networks", "Deep Learning", "Gradient Boosting", "AdaBoost", "Reinforcement Learning"
-]
+# Set seed for reproducibility
+np.random.seed(42)
 
-# Define attributes for each model: 0 = Simple, 1 = Complex, 2 = Medium (for simplicity)
-complexity = [
-    0, 0, 1, 1, 1, 0, 0, 2, 2, 0, 2, 2, 1, 1, 2
-]
+# Generate random sizes of plots (in square feet) between 500 and 3500
+sizes = np.random.uniform(500, 3500, 100)
 
-use_case = [
-    1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2
-]
+# Define a linear relationship: Price = m * Size + c + noise
+m = 150  # slope (price increases by 150 for each additional square foot)
+c = 50000  # intercept (base price)
+noise = np.random.normal(0, 1, 100)  # random noise for variability
 
-scalability = [
-    1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2
-]
+prices = m * sizes + c + noise  # Prices based on the size
+df = pd.DataFrame({
+    'Size' : sizes,
+    'Price' : prices
+})
+X = sm.add_constant(df['Size'])
+Y = df['Price']
 
-accuracy = [
-    1, 1, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 1, 2
-]
+trainx,validx,trainy,validy = train_test_split(X,Y, train_size = 0.8, random_state = 100)
 
-# Number of variables
-num_vars = len(models)
+price_lm = sm.OLS(trainy,trainx).fit()  #Fitted data
 
-# Compute angle for each axis
-angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
-
-# Make the plot a circle by repeating the first value at the end
-complexity += complexity[:1]
-use_case += use_case[:1]
-scalability += scalability[:1]
-accuracy += accuracy[:1]
-angles += angles[:1]
-
-# Create the figure and axes
-fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
-
-# Plot data
-ax.plot(angles, complexity, linewidth=2, linestyle='solid', label='Complexity')
-ax.plot(angles, use_case, linewidth=2, linestyle='solid', label='Use Case')
-ax.plot(angles, scalability, linewidth=2, linestyle='solid', label='Scalability')
-ax.plot(angles, accuracy, linewidth=2, linestyle='solid', label='Accuracy')
-
-# Fill the area under each plot
-ax.fill(angles, complexity, alpha=0.25)
-ax.fill(angles, use_case, alpha=0.25)
-ax.fill(angles, scalability, alpha=0.25)
-ax.fill(angles, accuracy, alpha=0.25)
-
-# Set the labels for each model
-ax.set_yticklabels([])
-ax.set_xticks(angles[:-1])
-ax.set_xticklabels(models, fontsize=10, ha='right')
-
-# Add title
-plt.title("Machine Learning Models Comparison (Spider Web)", size=15, y=1.1)
-
-# Add legend
-ax.legend(loc='upper right', bbox_to_anchor=(1.1, 1.1))
-
-# Show the plot
+# Check residuals
+resid = price_lm.resid
+fig,ax = plt.subplots()
+proplot = sm.ProbPlot(resid)
+proplot.ppplot(line='45',ax = ax)
+ax.set_xlim([-0.5,1.5])
+ax.set_ylim([-0.5,1.5])
+plt.title('residuals')
 plt.show()

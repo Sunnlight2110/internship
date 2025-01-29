@@ -17,7 +17,7 @@ marks_10th = np.random.uniform(40, 100, 50)
 # Define a linear relationship: Salary = m * Marks + c + noise
 m = 400  # Slope (how much salary increases per unit of marks)
 c = 100  # Intercept (base salary)
-noise = np.random.normal(0, 10, 50)  # Adding random noise for variability
+noise = np.random.normal(0, 1, 50)  # Adding random noise for variability
 
 Y = m * marks_10th + c + noise  # Salaries based on marks
 
@@ -44,9 +44,12 @@ probplot = sm.ProbPlot(resid)
 
 """residuals(dots) should be as close as possible to line
 if not, your model is not appropriate for data """
-# probplot.ppplot(line='45')
-# plt.title('residues')
-# plt.show()
+fig,ax = plt.subplots()
+probplot.ppplot(line='45',ax = ax)
+ax.set_xlim([-0.5,1.5])
+ax.set_ylim([-0.5,1.5])
+plt.title('residues')
+plt.show()
 
 # def get_standardized_value(values):
 #     return (values - values.mean())/values.std()
@@ -161,3 +164,5 @@ mark = np.array([80,0])
 X = sm.add_constant(mark)  # 2D array (1 row, 1 feature + constant)
 pred = salary_lm.predict(X)
 print(f"Marks {mark[0]}: Predicted Salary {pred[0]}")
+
+
