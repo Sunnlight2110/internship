@@ -111,16 +111,21 @@ salary_df[(salary_df.z_score_salary>3.0) | (salary_df.z_score_salary<-3.0)]
 # plt.show()
 
 # ? cooks distance
-influence = salary_lm.get_influence()
-(c,p) = influence.cooks_distance
-plt.stem(np.arange(len(trainx)),np.round(c,3),markerfmt=",")
-plt.title('Cooks distance for all observation')
-plt.xlabel('Row index')
-plt.ylabel('cooks distance')
+# influence = salary_lm.get_influence()
+# (c,p) = influence.cooks_distance
+# plt.stem(np.arange(len(trainx)),np.round(c,3),markerfmt=",")
+# plt.title('Cooks distance for all observation')
+# plt.xlabel('Row index')
+# plt.ylabel('cooks distance')
+# # plt.show()
+
+# # ? leverage values
+# fig , ax = plt.subplots(figsize = (8,6))
+# influence_plot(salary_lm, ax = ax)
+# plt.title('leverage value vs residuals')
 # plt.show()
 
-# ? leverage values
-fig , ax = plt.subplots(figsize = (8,6))
-influence_plot(salary_lm, ax = ax)
-plt.title('leverage value vs residuals')
-plt.show()
+
+# ? predict using validation dataset
+
+pred_y = salary_lm.predict(validx)
