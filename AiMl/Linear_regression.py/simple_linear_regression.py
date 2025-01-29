@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score,mean_squared_error
+from statsmodels.sandbox.regression.predstd import wls_prediction_std
 import statsmodels.api as sm
 from statsmodels.graphics.regressionplots import influence_plot
 import matplotlib.pyplot as plt
@@ -13,9 +15,9 @@ np.random.seed(42)
 marks_10th = np.random.uniform(40, 100, 50)
 
 # Define a linear relationship: Salary = m * Marks + c + noise
-m = 1500  # Slope (how much salary increases per unit of marks)
-c = 20000  # Intercept (base salary)
-noise = np.random.normal(0, 1, 50)  # Adding random noise for variability
+m = 400  # Slope (how much salary increases per unit of marks)
+c = 100  # Intercept (base salary)
+noise = np.random.normal(0, 10, 50)  # Adding random noise for variability
 
 Y = m * marks_10th + c + noise  # Salaries based on marks
 
@@ -24,8 +26,10 @@ salary_df = pd.DataFrame({
     'Salary':Y
 })
 
+Y = salary_df['Salary']
+
 # Prepare X with a constant term for the intercept
-X = sm.add_constant(marks_10th)  #? Adds a constant term (intercept) to the features
+X = sm.add_constant(salary_df['10th_marks'])  #? Adds a constant term (intercept) to the features
 
 #? Split dataset into training and validation sets (80/20 split)
 trainx, validx, trainy, validy = train_test_split(X, Y, train_size=0.8, random_state=100)
@@ -129,3 +133,31 @@ salary_df[(salary_df.z_score_salary>3.0) | (salary_df.z_score_salary<-3.0)]
 # ? predict using validation dataset
 
 pred_y = salary_lm.predict(validx)
+
+# ? checking accuracy of model
+
+print(np.abs(r2_score(validy,pred_y)))
+
+print(np.sqrt(mean_squared_error(validy,pred_y)))   #sqrt = square root
+
+#? predict low and high intervals for y
+"""In the context of linear regression, wls_prediction_std stands for Weighted Least Squares Prediction Standard Error. 
+    It`s a function that provides the standard error of the predictions made by a weighted least squares (WLS) regression model.
+    
+    Lower wls = batter"""
+_,pred_y_low,pred_y_high = wls_prediction_std(salary_lm,validx,alpha = 0.1)
+
+#  store values in dataframe
+pred_y_df = pd.DataFrame({
+    'grade_10' : validx['10th_marks'],
+    'pred_y_lef' : pred_y_low,
+    'pred_y_right' : pred_y_high
+})
+
+#? pred_y_df is our prediction dataset
+
+# predict single
+mark = np.array([80,0])
+X = sm.add_constant(mark)  # 2D array (1 row, 1 feature + constant)
+pred = salary_lm.predict(X)
+print(f"Marks {mark[0]}: Predicted Salary {pred[0]}")
