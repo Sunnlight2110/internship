@@ -1,8 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.metrics import mean_squared_error,r2_score
+from statsmodels.sandbox.regression.predstd import wls_prediction_std
 import statsmodels.api as sm
 from sklearn.model_selection import train_test_split
+from scipy import stats
+from statsmodels.graphics.regressionplots import influence_plot
+
 
 # Set seed for reproducibility
 np.random.seed(42)
@@ -27,7 +32,7 @@ trainx,validx,trainy,validy = train_test_split(X,Y, train_size = 0.8, random_sta
 
 price_lm = sm.OLS(trainy,trainx).fit()  #Fitted data
 
-# Check residuals
+# # Check residuals
 resid = price_lm.resid
 fig,ax = plt.subplots()
 proplot = sm.ProbPlot(resid)
@@ -36,3 +41,56 @@ ax.set_xlim([-0.5,1.5])
 ax.set_ylim([-0.5,1.5])
 plt.title('residuals')
 plt.show()
+
+def get_standerdize_value(value):
+    return (value - value.mean()) / value.std()
+plt.scatter(get_standerdize_value(price_lm.fittedvalues),get_standerdize_value(resid))
+plt.title('Residual plot')
+plt.xlabel('standardize predicted value')
+plt.ylabel('standardize residuals')
+plt.grid(True)
+plt.show()
+
+
+# Z test:
+df['z_score_price'] = stats.zscore(df.Price)
+plt.figure(figsize=(10,6))
+plt.scatter(df['Price'],df['Size']) #Original data
+plt.scatter(
+    df.loc[(df.z_score_price > -3.0) & (df.z_score_price < 3.0)]['Price'],
+    df.loc[(df.z_score_price > -3.0) & (df.z_score_price < 3.0)]['Size']
+)
+plt.title('Z score')
+plt.xlabel('Price')
+plt.ylabel('Size')
+plt.show()
+
+# Cooks distance
+influence = price_lm.get_influence()
+(c, p) = influence.cooks_distance
+plt.stem(np.arange(len(trainx)),np.round(c,3),markerfmt=',')
+plt.title('Cooks distance for all observation')
+plt.xlabel('Row index')
+plt.ylabel('cooks distance')
+plt.show()
+
+# leverage values
+fig , ax = plt.subplots(figsize = (8,6))
+influence_plot(price_lm, ax = ax)
+plt.title('leverage value vs residuals')
+plt.show()
+
+pred_y = price_lm.predict(validx)
+
+#  Predict using valid dataset
+print(np.abs(r2_score(validy,pred_y)))
+print(np.sqrt(mean_squared_error(validy,pred_y)))
+
+# predict low and high intervals for y
+_,pred_y_low,pred_y_high = wls_prediction_std(price_lm,validx,alpha = 0.1)
+pred_y_df = pd.DataFrame({
+    'Size' : validx['Size'],
+    'pred_y_lef' : pred_y_low,
+    'pred_y_right' : pred_y_high
+})
+print(pred_y_low,pred_y_high)

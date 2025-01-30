@@ -103,7 +103,7 @@ Clusters or Outliers:
     """
 
 salary_df['z_score_salary'] = stats.zscore(salary_df.Salary)
-salary_df[(salary_df.z_score_salary>3.0) | (salary_df.z_score_salary<-3.0)]
+# salary_df[(salary_df.z_score_salary>3.0) | (salary_df.z_score_salary<-3.0)]
 
 # plt.figure(figsize=(10,6))
 # plt.scatter(salary_df['10th_marks'], salary_df['Salary'], label='Data points')  #Original data
@@ -164,5 +164,6 @@ mark = np.array([80,0])
 X = sm.add_constant(mark)  # 2D array (1 row, 1 feature + constant)
 pred = salary_lm.predict(X)
 print(f"Marks {mark[0]}: Predicted Salary {pred[0]}")
+
 
 
