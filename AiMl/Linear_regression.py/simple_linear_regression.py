@@ -34,6 +34,9 @@ X = sm.add_constant(salary_df['10th_marks'])  #? Adds a constant term (intercept
 #? Split dataset into training and validation sets (80/20 split)
 trainx, validx, trainy, validy = train_test_split(X, Y, train_size=0.8, random_state=100)
 
+print(trainx.dtypes)
+# print(trainy.dtypes)
+
 # Fit the OLS model
 salary_lm = sm.OLS(trainy, trainx).fit()    #fitted data
 
@@ -45,11 +48,11 @@ probplot = sm.ProbPlot(resid)
 """residuals(dots) should be as close as possible to line
 if not, your model is not appropriate for data """
 fig,ax = plt.subplots()
-probplot.ppplot(line='45',ax = ax)
-ax.set_xlim([-0.5,1.5])
-ax.set_ylim([-0.5,1.5])
-plt.title('residues')
-plt.show()
+# probplot.ppplot(line='45',ax = ax)
+# ax.set_xlim([-0.5,1.5])
+# ax.set_ylim([-0.5,1.5])
+# plt.title('residues')
+# plt.show()
 
 # def get_standardized_value(values):
 #     return (values - values.mean())/values.std()
