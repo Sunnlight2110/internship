@@ -1,0 +1,65 @@
+
+1. Residuals vs Leverage Plot
+Purpose: To detect influential points that have high leverage and potentially affect model fit.
+Usage: Helps to identify outliers that could distort the model’s predictions.
+What Anomaly Is: Points with large residuals and high leverage can significantly influence the regression model.
+What to Look for in the Graph: 
+    - Points that are far from the center (both in terms of leverage and residuals) are considered influential.
+    - Leverage > 2 * (k + 1) / n (high leverage points) and large residuals may indicate influential observations.
+    - Dotted lines in the plot usually represent Cook’s Distance thresholds for influential points.
+    
+2. Standardized Residuals vs Standardized Predicted Values Plot
+Purpose: To check the relationship between residuals and predicted values, and verify constant variance.
+Usage: It helps to detect any non-random pattern, suggesting model misspecification or heteroscedasticity.
+What Anomaly Is: Non-random patterns like U-shape or systematic trends indicate model issues.
+What to Look for in the Graph: 
+    - Ideally, the points should be scattered randomly around zero, showing no particular pattern.
+    - A funnel shape or trends indicate heteroscedasticity (unequal variance of residuals across predictions).
+
+3. Heatmap of Correlation Matrix
+Purpose: To detect multicollinearity between independent variables.
+Usage: Used for understanding relationships between predictors and potentially removing highly correlated features.
+What Anomaly Is: High correlation (close to 1 or -1) between predictor variables indicates multicollinearity.
+What to Look for in the Graph: 
+    - Look for pairs of features with high correlation (values close to 1 or -1).
+    - High correlation between variables may lead to instability in regression coefficients and variance inflation.
+
+4. Histogram of Residuals
+Purpose: To check the distribution of residuals for normality.
+Usage: Helps in diagnosing violations of normality assumptions in linear regression.
+What Anomaly Is: A skewed or non-normal distribution suggests a violation of the assumption of normality.
+What to Look for in the Graph:
+    - The residuals should follow a bell-shaped curve (normal distribution).
+    - Skewness or multimodal patterns indicate non-normality, which might affect model performance.
+
+5. Q-Q Plot (Quantile-Quantile Plot)
+Purpose: To visually assess the normality of residuals.
+Usage: Used to verify if the residuals are normally distributed.
+What Anomaly Is: Deviations from the straight line suggest non-normality.
+What to Look for in the Graph: 
+    - Points should lie approximately on the diagonal line for a normal distribution.
+    - Large deviations from the line (especially at the ends) suggest non-normality.
+
+6. Cook’s Distance Plot
+Purpose: To detect influential points with respect to both the residuals and leverage.
+Usage: Identifies data points that have an undue influence on the regression model.
+What Anomaly Is: High Cook’s Distance values indicate influential points that may distort model accuracy.
+What to Look for in the Graph:
+    - Points above the threshold (often shown as a horizontal line) are considered influential.
+    - These points should be carefully examined, as they may be outliers or mistakes.
+
+7. Autocorrelation Plot of Residuals
+Purpose: To check if residuals are independent (i.e., no autocorrelation).
+Usage: Useful for time-series models to ensure the residuals don’t have a temporal structure.
+What Anomaly Is: Significant autocorrelation at lag 1 (or other lags) suggests model misspecification.
+What to Look for in the Graph:
+    - Ideally, no significant correlations (bars should be close to zero).
+    - Large spikes at certain lags suggest autocorrelation, indicating the need for more advanced modeling techniques (e.g., ARIMA for time series).
+
+8. Partial Regression Plot
+Purpose: To visualize the effect of a specific predictor on the response variable while holding other predictors constant.
+Usage: Helps to identify relationships between individual predictors and the response variable.
+What Anomaly Is: Non-linear relationships, or deviations from a linear trend, suggest model issues.
+What to Look for in the Graph:
+    - The plot should show a linear relationship if the predictor is appropriately related to the outcome.
+    - Non-linear patterns may indicate the need for transformations or a different model.

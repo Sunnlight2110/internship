@@ -1,0 +1,85 @@
+
+Linear Regression (Simple and Multiple)
+
+1. **Steps for Linear Regression**
+
+   1.1 **Understanding the Problem**:
+       - For **Simple Linear Regression**, we have one independent variable (X) and one dependent variable (Y).
+       - For **Multiple Linear Regression**, we have multiple independent variables (X1, X2, …, Xn) and one dependent variable (Y).
+
+   1.2 **Preprocessing Data**:
+       - Handle missing values.
+       - Encode categorical variables if any.
+       - Scale or normalize data (if required, especially for multiple regression).
+
+   1.3 **Split Data into Training and Testing Sets**:
+       - Use train-test split to divide your dataset into training and testing data.
+       - 80-20 or 70-30 split is a common approach.
+
+   1.4 **Model Building**:
+       - For **Simple Linear Regression**: Fit the model using a single independent variable.
+       - For **Multiple Linear Regression**: Fit the model using multiple independent variables.
+
+   1.5 **Model Evaluation**:
+       - Evaluate the model’s performance using metrics such as **R-squared**, **Mean Squared Error (MSE)**, **Adjusted R-squared**, etc.
+
+   1.6 **Check Residuals**:
+       - Check the residuals to ensure the assumptions of linear regression are satisfied.
+   
+   1.7 **Model Refinement**:
+       - Consider removing multicollinearity, adding or removing features, or transforming features.
+
+   1.8 **Prediction**:
+       - Use the trained model to make predictions on unseen data (test set).
+
+2. **Graphs to Use in Each Step**
+
+   2.1 **Step 1: Understanding the Problem**:
+       - **Simple Linear Regression**: Scatter plot of the independent variable (X) and the dependent variable (Y).
+       - **Multiple Linear Regression**: Pairwise scatter plots (or correlation matrix heatmap) to understand relationships between multiple independent variables and the dependent variable.
+
+   2.2 **Step 2: Preprocessing Data**:
+       - **Check Missing Values**: Use histograms or box plots to detect outliers or missing values.
+       - **Check Categorical Variables**: Bar plots for categorical variables to show their distribution.
+
+   2.3 **Step 3: Split Data into Training and Testing Sets**:
+       - **Training vs Testing Data**: Plot the data points to check how data is split (e.g., train-test scatter plot).
+
+   2.4 **Step 4: Model Building**:
+       - **Simple Linear Regression**: Plot the fitted line over the scatter plot to visualize the relationship.
+       - **Multiple Linear Regression**: This is harder to visualize with more than two variables. For higher-dimensional data, you might use **3D plots** or **pairwise relationships**.
+
+   2.5 **Step 5: Model Evaluation**:
+       - **Residual Plot**: Plot residuals against the fitted values to check for randomness (hence no pattern).
+       - **Q-Q Plot**: To check if residuals are normally distributed.
+       - **R-Squared Plot**: To evaluate model accuracy.
+
+   2.6 **Step 6: Check Residuals**:
+       - **Residual vs Fitted Plot**: To check for homoscedasticity (constant variance of residuals).
+       - **Q-Q Plot**: For checking normality of residuals.
+
+   2.7 **Step 7: Model Refinement**:
+       - **VIF Plot**: Variance Inflation Factor (VIF) plot to check multicollinearity in multiple linear regression.
+       - **Heatmap of Correlation Matrix**: To spot multicollinearity issues.
+
+   2.8 **Step 8: Prediction**:
+       - **Prediction Plot**: Plot the actual vs predicted values to check prediction accuracy.
+
+3. **Checking for Anomalies in Linear Regression**
+
+   3.1 **Outliers**:
+       - In simple linear regression, a **scatter plot** helps in spotting outliers.
+       - In multiple linear regression, **Cook’s Distance** plot helps in detecting influential points.
+
+   3.2 **Homoscedasticity**:
+       - Residual vs Fitted plot. If you see a funnel shape or any pattern, it indicates heteroscedasticity (i.e., non-constant variance).
+
+   3.3 **Normality of Residuals**:
+       - Use **Q-Q plot** to check if the residuals are normally distributed. Non-normality of residuals could indicate model misspecification.
+
+   3.4 **Multicollinearity** (for multiple linear regression):
+       - Use **VIF plot** to check for multicollinearity. High VIF values indicate high correlation between independent variables, which can cause instability in regression coefficients.
+
+   3.5 **Leverage Points**:
+       - Leverage points are influential data points that can disproportionately affect the model's estimates. The **Leverage vs Residuals** plot is useful for identifying them.
+

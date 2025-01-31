@@ -1,0 +1,43 @@
+1. Residuals vs. Fitted Values Plot (Standardized Residuals vs. Predicted Values)
+Purpose: This plot helps in checking if there is any pattern in the residuals. A good model should have residuals randomly scattered around zero with no discernible pattern. Patterns here suggest issues like non-linearity or heteroscedasticity.
+
+Interpretation: If the plot shows a random scatter with no trends, your model is likely good. Any systematic patterns, such as a funnel shape, suggest heteroscedasticity.
+
+2. Scale-Location Plot (also known as Spread-Location Plot)
+Purpose: This plot helps in checking the assumption of homoscedasticity. It plots the square root of the standardized residuals against the fitted values.
+
+Interpretation: The points should be equally spread out along the range of fitted values. A pattern here, like a trend, indicates heteroscedasticity.
+
+3. Leverage vs. Residuals Plot (Influence Plot)
+Purpose: Used to detect influential data points that have high leverage and high residuals (outliers).
+
+Interpretation: Points that are far from the center (high leverage) and have large residuals (high error) are potentially influential. These points can unduly affect your model’s predictions and should be carefully examined.
+
+4. Normal Q-Q Plot (Quantile-Quantile Plot)
+Purpose: To check if the residuals follow a normal distribution.
+
+Interpretation: If the residuals are normally distributed, the points should lie on or very close to the diagonal line. Large deviations from the line suggest non-normality, which may affect hypothesis testing in regression models.
+
+5. Residuals vs. Leverage Plot (with Cook’s Distance)
+Purpose: Used to identify influential points in your dataset. This is especially useful when checking for outliers and points that disproportionately affect your regression results.
+
+Interpretation: Points with high leverage and large residuals should be flagged as potentially influential, and you can compute Cook's Distance to quantify their influence.
+
+6. Cook’s Distance Plot
+Purpose: To detect influential data points that have a disproportionate effect on your model's coefficients.
+Interpretation: Cook’s Distance greater than 1 typically indicates a highly influential point. A plot of Cook’s Distance vs. observation number helps visualize these points.
+7. Correlation Heatmap
+Purpose: To visualize the correlation between different features in your dataset. High correlations between features may indicate multicollinearity.
+Interpretation: A heatmap with highly correlated variables (close to +1 or -1) indicates potential multicollinearity issues, which can affect the regression model.
+8. Partial Regression Plot
+Purpose: To show the relationship between the dependent variable and a particular independent variable, after accounting for the effects of the other variables in the model.
+Interpretation: Helps in visualizing the effect of a single variable, accounting for the other variables. It can show if there are non-linear relationships between features and the target.
+9. Added Variable Plot
+Purpose: Also known as the component-plus-residual plot. It helps visualize the effect of adding a particular independent variable to the model.
+Interpretation: This plot helps show how adding a new feature improves the model and can highlight non-linear relationships.
+10. Autocorrelation Plot of Residuals
+Purpose: To check for autocorrelation in residuals, especially when working with time series data. Residuals should ideally not be correlated.
+Interpretation: If residuals are correlated, this indicates that the model is missing key information, such as temporal dependencies in time series data.
+11. Pair Plot / Scatter Plot Matrix
+Purpose: To visualize relationships between multiple variables. It’s often used in exploratory data analysis (EDA) to find patterns between predictors.
+Interpretation: Correlations between features can be spotted here, and patterns across different dimensions can be explored visually.
