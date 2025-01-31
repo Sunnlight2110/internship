@@ -121,13 +121,13 @@ salary_df['z_score_salary'] = stats.zscore(salary_df.Salary)
 # plt.show()
 
 # ? cooks distance
-# influence = salary_lm.get_influence()
-# (c,p) = influence.cooks_distance
-# plt.stem(np.arange(len(trainx)),np.round(c,3),markerfmt=",")
-# plt.title('Cooks distance for all observation')
-# plt.xlabel('Row index')
-# plt.ylabel('cooks distance')
-# # plt.show()
+influence = salary_lm.get_influence()
+(c,p) = influence.cooks_distance
+plt.stem(np.arange(len(trainx)),np.round(c,3),markerfmt=",")
+plt.title('Cooks distance for all observation')
+plt.xlabel('Row index')
+plt.ylabel('cooks distance')
+plt.show()
 
 # # ? leverage values
 # fig , ax = plt.subplots(figsize = (8,6))

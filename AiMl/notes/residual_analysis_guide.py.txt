@@ -1,20 +1,25 @@
 
-| Model Type                       | Homoscedasticity               | Normality of Residuals        | Autocorrelation                   | Influential Points            | Outliers              | Evaluation Metrics            |
-|----------------------------------|--------------------------------|-------------------------------|-----------------------------------|-------------------------------|-----------------------|-------------------------------|
-| Linear Regression                | Residuals vs Fitted, BP Test   | Q-Q Plot, Shapiro-Wilk Test   | Durbin-Watson                     | Cook's Distance, Leverage     | Studentized Residuals | R-squared, MSE                |
-| Time Series (ARIMA, SARIMA)      | Residuals vs Fitted            | Q-Q Plot                      | Durbin-Watson, Breusch-Godfrey    | Cook's Distance               | Studentized Residuals | AIC, BIC                      |
-| Decision Trees, Random Forests   | Not needed                     | Not needed                    | Not needed                        | Leverage, Feature Importance  | Feature Importance    | R-squared, Cross-validation   |
-| Support Vector Machines (SVM)    | Not needed                     | Not needed                    | Not needed                        | Support Vectors               | Decision Boundaries   | Accuracy, Cross-validation    |
-| Neural Networks (ANN, CNN, RNN)  | Not needed                     | Not needed                    | Not needed                        | Activation Maps               | Loss Function         | Accuracy, Cross-validation    |
-| K-Nearest Neighbors (KNN)        | Not needed                     | Not needed                    | Not needed                        | Distance Metrics              | Distance Measures     | Accuracy, Cross-validation    |
+| Model Type                       | Homoscedasticity               | Normality of Residuals        | Autocorrelation                   | Influential Points            | Outliers              | Evaluation Metrics            |Multicollinearity          |
+|----------------------------------|--------------------------------|-------------------------------|-----------------------------------|-------------------------------|-----------------------|-------------------------------|---------------------------|
+| Linear Regression                | Residuals vs Fitted, BP Test   | Q-Q Plot, Shapiro-Wilk Test   | Durbin-Watson                     | Cook's Distance, Leverage     | Studentized Residuals | R-squared, MSE                | VIF, Correlation Matrix   |
+| Time Series (ARIMA, SARIMA)      | Residuals vs Fitted            | Q-Q Plot                      | Durbin-Watson, Breusch-Godfrey    | Cook's Distance               | Studentized Residuals | AIC, BIC                      | Not needed                |
+| Decision Trees, Random Forests   | Not needed                     | Not needed                    | Not needed                        | Leverage, Feature Importance  | Feature Importance    | R-squared, Cross-validation   | Not needed                |
+| Support Vector Machines (SVM)    | Not needed                     | Not needed                    | Not needed                        | Support Vectors               | Decision Boundaries   | Accuracy, Cross-validation    | Not needed                |
+| Neural Networks (ANN, CNN, RNN)  | Not needed                     | Not needed                    | Not needed                        | Activation Maps               | Loss Function         | Accuracy, Cross-validation    | Not needed                |
+| K-Nearest Neighbors (KNN)        | Not needed                     | Not needed                    | Not needed                        | Distance Metrics              | Distance Measures     | Accuracy, Cross-validation    | Not needed                |
 
 
 
 
+# Adding "What to Look For" in each section and generating the new txt file
 
+content = """
 Residuals vs Fitted Plot (Homoscedasticity)
 Purpose: To check if the residuals exhibit constant variance (homoscedasticity). Ideally, residuals should be randomly scattered around zero, with no discernible pattern.
 Interpretation: A random scatter suggests homoscedasticity; a pattern (e.g., funnel shape) suggests heteroscedasticity.
+What to Look For:
+    Good: Residuals spread evenly, no shape.
+    Bad: Funnel shape or pattern suggests heteroscedasticity.
 Code:
     plt.scatter(model.fittedvalues, model.resid)
     plt.axhline(0, color='red', linestyle='--')
@@ -26,6 +31,9 @@ Code:
 Breusch-Pagan Test (Homoscedasticity)
 Purpose: Formal test for heteroscedasticity. It checks if the variance of residuals is constant.
 Interpretation: A p-value less than 0.05 indicates heteroscedasticity, suggesting the residuals have non-constant variance.
+What to Look For:
+    Good: p-value > 0.05 (no evidence of heteroscedasticity).
+    Bad: p-value < 0.05 (suggesting heteroscedasticity).
 Code:
     from statsmodels.stats.diagnostic import het_breuschpagan
     bp_test = het_breuschpagan(model.resid, model.model.exog)
@@ -34,6 +42,9 @@ Code:
 Q-Q Plot (Normality of Residuals)
 Purpose: To check if residuals are normally distributed by comparing them to a theoretical normal distribution.
 Interpretation: If the points lie approximately along a straight line, the residuals are normally distributed. Deviations indicate non-normality.
+What to Look For:
+    Good: Points fall along the diagonal line (normal distribution).
+    Bad: Points deviate from the line (non-normal residuals).
 Code:
     import statsmodels.api as sm
     sm.qqplot(model.resid, line='45')
@@ -43,6 +54,9 @@ Code:
 Shapiro-Wilk Test (Normality of Residuals)
 Purpose: A formal statistical test for normality. The null hypothesis is that the residuals follow a normal distribution.
 Interpretation: A p-value less than 0.05 indicates that the residuals do not follow a normal distribution.
+What to Look For:
+    Good: p-value > 0.05 (residuals are normally distributed).
+    Bad: p-value < 0.05 (residuals are not normally distributed).
 Code:
     from scipy.stats import shapiro
     stat, p_value = shapiro(model.resid)
@@ -51,6 +65,9 @@ Code:
 Anderson-Darling Test (Normality of Residuals)
 Purpose: Another statistical test for normality of residuals.
 Interpretation: A p-value less than 0.05 indicates that the residuals deviate from normality.
+What to Look For:
+    Good: p-value > 0.05 (residuals follow normal distribution).
+    Bad: p-value < 0.05 (residuals deviate from normality).
 Code:
     from scipy.stats import anderson
     result = anderson(model.resid)
@@ -59,14 +76,20 @@ Code:
 Kolmogorov-Smirnov Test (Normality of Residuals)
 Purpose: Compares the empirical distribution of residuals with a normal distribution.
 Interpretation: A p-value less than 0.05 suggests that the residuals do not follow a normal distribution.
+What to Look For:
+    Good: p-value > 0.05 (residuals follow a normal distribution).
+    Bad: p-value < 0.05 (residuals deviate from normality).
 Code:
     from scipy.stats import kstest
     stat, p_value = kstest(model.resid, 'norm')
     print(f"Kolmogorov-Smirnov Test Stat: {stat}, p-value: {p_value}")
 
- Durbin-Watson Test (Autocorrelation of Residuals)
+Durbin-Watson Test (Autocorrelation of Residuals)
 Purpose: Tests for autocorrelation in residuals, which is especially useful for time series data.
 Interpretation: A value close to 2 suggests no autocorrelation. Values close to 0 or 4 indicate positive or negative autocorrelation, respectively.
+What to Look For:
+    Good: Value near 2 (indicating no autocorrelation).
+    Bad: Value near 0 or 4 (indicating positive or negative autocorrelation).
 Code:
     from statsmodels.stats.stattools import durbin_watson
     dw_stat = durbin_watson(model.resid)
@@ -75,6 +98,9 @@ Code:
 Cook's Distance (Influential Points)
 Purpose: Identifies influential data points that disproportionately affect the model’s estimates.
 Interpretation: Data points with high Cook's distance may be outliers or have a significant influence on the regression model.
+What to Look For:
+    Good: Points with Cook’s distance < 1 (not influential).
+    Bad: Points with Cook’s distance > 1 (potential influential points).
 Code:
     influence = model.get_influence()
     cooks_d = influence.cooks_distance[0]
@@ -87,6 +113,9 @@ Code:
 Leverage (Influential Points)
 Purpose: Measures how much a data point influences the regression line. High leverage points have extreme values for the predictor variables.
 Interpretation: Data points with high leverage are more likely to have a large influence on the regression model and should be carefully reviewed.
+What to Look For:
+    Good: Points with leverage < 2*(p/n) (no influence).
+    Bad: Points with leverage > 2*(p/n) (high influence, review carefully).
 Code:
     leverage = influence.hat_matrix_diag
     plt.stem(np.arange(len(leverage)), leverage, markerfmt="o", basefmt=" ", use_line_collection=True)
@@ -98,6 +127,9 @@ Code:
 Studentized Residuals (Outliers)
 Purpose: Identifies outliers by measuring the difference between the observed value and the predicted value, adjusted for the variance of the residuals.
 Interpretation: Large studentized residuals (greater than ±3) indicate outliers.
+What to Look For:
+    Good: Residuals between -3 and +3 (no outliers).
+    Bad: Residuals greater than 3 or less than -3 (indicating outliers).
 Code:
     from statsmodels.stats.outliers_influence import OLSInfluence
     influence = OLSInfluence(model)
@@ -111,7 +143,45 @@ Code:
 Breusch-Godfrey Test (Autocorrelation)
 Purpose: Detects autocorrelation at higher lags, useful when time-series data has lagged dependencies.
 Interpretation: A significant p-value suggests that residuals are autocorrelated at one or more lags.
+What to Look For:
+    Good: p-value > 0.05 (no autocorrelation in residuals).
+    Bad: p-value < 0.05 (evidence of autocorrelation).
 Code:
     from statsmodels.stats.diagnostic import acorr_breusch_godfrey
     bg_test = acorr_breusch_godfrey(model)
     print(f"Breusch-Godfrey Test p-value: {bg_test[1]}")
+
+Variance Inflation Factor (VIF)
+Purpose: Detects multicollinearity by measuring how much variance of a feature is inflated due to correlation with other features.
+Interpretation:
+    VIF > 10 → High multicollinearity (problematic)
+    VIF between 5-10 → Moderate multicollinearity (watch out)
+    VIF < 5 → Low multicollinearity (good)
+What to Look For:
+    Good: VIF < 5 (low multicollinearity).
+    Bad: VIF > 5 or 10 (high multicollinearity).
+Code:
+    from statsmodels.stats.outliers_influence import variance_inflation_factor
+    import pandas as pd
+
+    X = df[['feature1', 'feature2', 'feature3']]  # Select independent variables
+    vif_data = pd.DataFrame()
+    vif_data["Feature"] = X.columns
+    vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+    print(vif_data)
+
+Correlation Matrix
+Purpose: Shows how strongly features are related to each other, helping to detect multicollinearity.
+Interpretation:
+    Correlation close to +1 or -1 → High collinearity (problematic)
+    Correlation close to 0 → No multicollinearity (good)
+What to Look For:
+    Good: Correlation < 0.8 or 0.9 (no multicollinearity).
+    Bad: Correlation > 0.8 or 0.9 (multicollinearity).
+Code:
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    corr_matrix = df.corr()
+    plt.figure(figsize=(8, 6))
+   
