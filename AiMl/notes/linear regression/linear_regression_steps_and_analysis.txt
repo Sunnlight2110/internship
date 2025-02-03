@@ -13,6 +13,15 @@ Simple linear regression
 
 Multiple linear regression
     Preprocess the data (clean, scale, encode, split).
+        encode
+            encoded_df = pd.get_dummies( df[X_features],
+            columns = categorical_features,
+            drop_first = True ) 
+
+        train_test_split:
+            X = sm.add_constant(encoded_df)
+            Y = df[what to predict]
+
     Fit the model using OLS.
     Check for key assumptions (linearity, homoscedasticity, etc.).
     Check for multicollinearity using VIF.
