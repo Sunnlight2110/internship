@@ -1,0 +1,5 @@
+Wald’s Test and LR Test are used for testing the significance of predictors and comparing models.
+Pseudo R-squared, Deviance, and AIC/BIC help assess model fit.
+Confusion Matrix, Accuracy, Precision, Recall, F1-Score, and ROC-AUC are for classification performance evaluation.
+Cook’s Distance and Leverage help detect influential points that could affect model performance.
+Shapiro-Wilk, Breusch-Pagan, and Durbin-Watson help assess residuals and model assumptions.

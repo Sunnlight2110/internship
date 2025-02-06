@@ -1,4 +1,3 @@
-
 | Model Type                        | Homoscedasticity              | Normality of Residuals        | Autocorrelation                   | Influential Points                | Outliers              | Evaluation Metrics                | Multicollinearity         |
 |-----------------------------------|-------------------------------|-------------------------------|-----------------------------------|-----------------------------------|-----------------------|-----------------------------------|---------------------------|
 | Linear Regression                 | Residuals vs Fitted, BP Test  | Q-Q Plot, Shapiro-Wilk Test   | Durbin-Watson                     | Cook's Distance, Leverage         | Studentized Residuals | R-squared, MSE                    | VIF, Correlation Matrix   |
@@ -14,8 +13,6 @@
 | Ridge/Lasso Regression            | Residuals vs Fitted           | Q-Q Plot, Shapiro-Wilk Test   | Durbin-Watson                     | Cook's Distance                   | Studentized Residuals | MSE, AIC, Cross-validation        | VIF, Correlation Matrix   |
 
 
-
-content = """
 Residuals vs Fitted Plot (Homoscedasticity)
 Purpose: To check if the residuals exhibit constant variance (homoscedasticity). Ideally, residuals should be randomly scattered around zero, with no discernible pattern.
 Interpretation: A random scatter suggests homoscedasticity; a pattern (e.g., funnel shape) suggests heteroscedasticity.
@@ -186,4 +183,6 @@ Code:
 
     corr_matrix = df.corr()
     plt.figure(figsize=(8, 6))
-   
+    sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", linewidths=0.5)
+    plt.title('Correlation Matrix')
+    plt.show()
