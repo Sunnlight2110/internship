@@ -1,0 +1,67 @@
+Preprocess the data:
+
+Clean the data (handle missing values, remove duplicates, etc.).
+
+    Scale numerical features if needed.
+
+    Encode categorical features:
+    encoded_df = pd.get_dummies(df[X_features], columns=categorical_features, drop_first=True)
+
+Split the dataset:
+    X = sm.add_constant(encoded_df)
+    Y = df[what to predict]
+
+Fit the model using OLS:
+
+    Train a logistic regression model using statsmodels:
+    logit_model = sm.Logit(Y_train, X_train)
+    result = logit_model.fit()
+
+Check key assumptions:
+
+    Linearity of independent variables with the log-odds.
+    No perfect multicollinearity.
+    Homoscedasticity.
+    Check for multicollinearity:
+    Use Variance Inflation Factor (VIF) to detect multicollinearity issues.
+    vif_data["VIF"] = [variance_inflation_factor(X_train.values, i) for i in range(X_train.shape[1])]
+
+Diagnose model issues:
+
+Examine Cook’s Distance for influential points.
+
+Check leverage points to identify outliers.
+
+Evaluate the model:
+
+Accuracy, confusion matrix, classification report.
+
+Sensitivity, specificity, precision, recall.
+
+Plot residuals:
+
+Residual plot to check for homoscedasticity.
+
+Q-Q plot to assess normality of residuals.
+
+Interpret model coefficients:
+
+Analyze odds ratios for interpretability.
+
+Understand the impact of each feature on the prediction.
+
+Improve the model if needed:
+
+Feature engineering.
+
+Try interaction terms or polynomial features.
+
+Tune hyperparameters.
+
+Deploy the model:
+
+Save the model for future predictions.
+
+Use trained model to make predictions on new data.
+
+    

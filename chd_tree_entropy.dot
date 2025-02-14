@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="checkin_acc_A14 <= 0.5\nentropy = 0.88\nsamples = 700\nvalue = [491.0, 209.0]"] ;
+1 [label="duration <= 33.0\nentropy = 0.976\nsamples = 425\nvalue = [251, 174]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="amount <= 10975.5\nentropy = 0.939\nsamples = 343\nvalue = [221, 122]"] ;
+1 -> 2 ;
+3 [label="entropy = 0.929\nsamples = 337\nvalue = [221, 116]"] ;
+2 -> 3 ;
+4 [label="entropy = 0.0\nsamples = 6\nvalue = [0, 6]"] ;
+2 -> 4 ;
+5 [label="present_emp_since_A75 <= 0.5\nentropy = 0.947\nsamples = 82\nvalue = [30, 52]"] ;
+1 -> 5 ;
+6 [label="entropy = 0.983\nsamples = 66\nvalue = [28, 38]"] ;
+5 -> 6 ;
+7 [label="entropy = 0.544\nsamples = 16\nvalue = [2, 14]"] ;
+5 -> 7 ;
+8 [label="inst_plans_A143 <= 0.5\nentropy = 0.55\nsamples = 275\nvalue = [240.0, 35.0]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="residing_since <= 2.5\nentropy = 0.887\nsamples = 46\nvalue = [32, 14]"] ;
+8 -> 9 ;
+10 [label="entropy = 0.988\nsamples = 23\nvalue = [13.0, 10.0]"] ;
+9 -> 10 ;
+11 [label="entropy = 0.667\nsamples = 23\nvalue = [19, 4]"] ;
+9 -> 11 ;
+12 [label="credit_history_A34 <= 0.5\nentropy = 0.442\nsamples = 229\nvalue = [208, 21]"] ;
+8 -> 12 ;
+13 [label="entropy = 0.592\nsamples = 133\nvalue = [114, 19]"] ;
+12 -> 13 ;
+14 [label="entropy = 0.146\nsamples = 96\nvalue = [94, 2]"] ;
+12 -> 14 ;
+}

@@ -1,0 +1,37 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label=<Candidate relocate actual_Yes &le; 0.5<br/>gini = 0.5<br/>samples = 2354<br/>value = [1159.0, 1195.0]<br/>class = Joining>, fillcolor="#f9fcfe"] ;
+1 [label=<Notice period &le; 37.5<br/>gini = 0.493<br/>samples = 2138<br/>value = [943.0, 1195.0]<br/>class = Joining>, fillcolor="#d5eafa"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<Duration to accept offer &le; 75.0<br/>gini = 0.497<br/>samples = 1237<br/>value = [668, 569]<br/>class = Not Joining>, fillcolor="#fbece2"] ;
+1 -> 2 ;
+3 [label=<Candidate Source_Agency &le; 0.5<br/>gini = 0.494<br/>samples = 1182<br/>value = [658, 524]<br/>class = Not Joining>, fillcolor="#fae5d7"] ;
+2 -> 3 ;
+4 [label=<gini = 0.479<br/>samples = 826<br/>value = [498.0, 328.0]<br/>class = Not Joining>, fillcolor="#f6d4bb"] ;
+3 -> 4 ;
+5 [label=<gini = 0.495<br/>samples = 356<br/>value = [160, 196]<br/>class = Joining>, fillcolor="#dbedfa"] ;
+3 -> 5 ;
+6 [label=<Offered band_E3 &le; 0.5<br/>gini = 0.298<br/>samples = 55<br/>value = [10, 45]<br/>class = Joining>, fillcolor="#65b3eb"] ;
+2 -> 6 ;
+7 [label=<gini = 0.233<br/>samples = 52<br/>value = [7, 45]<br/>class = Joining>, fillcolor="#58ace9"] ;
+6 -> 7 ;
+8 [label=<gini = 0.0<br/>samples = 3<br/>value = [3, 0]<br/>class = Not Joining>, fillcolor="#e58139"] ;
+6 -> 8 ;
+9 [label=<Percent difference CTC &le; -4.5<br/>gini = 0.424<br/>samples = 901<br/>value = [275, 626]<br/>class = Joining>, fillcolor="#90c8f0"] ;
+1 -> 9 ;
+10 [label=<Duration to accept offer &le; 23.5<br/>gini = 0.327<br/>samples = 374<br/>value = [77, 297]<br/>class = Joining>, fillcolor="#6cb6ec"] ;
+9 -> 10 ;
+11 [label=<gini = 0.254<br/>samples = 214<br/>value = [32.0, 182.0]<br/>class = Joining>, fillcolor="#5caeea"] ;
+10 -> 11 ;
+12 [label=<gini = 0.404<br/>samples = 160<br/>value = [45, 115]<br/>class = Joining>, fillcolor="#86c3ef"] ;
+10 -> 12 ;
+13 [label=<Duration to accept offer &le; 0.5<br/>gini = 0.469<br/>samples = 527<br/>value = [198, 329]<br/>class = Joining>, fillcolor="#b0d8f5"] ;
+9 -> 13 ;
+14 [label=<gini = 0.418<br/>samples = 37<br/>value = [26, 11]<br/>class = Not Joining>, fillcolor="#f0b68d"] ;
+13 -> 14 ;
+15 [label=<gini = 0.456<br/>samples = 490<br/>value = [172, 318]<br/>class = Joining>, fillcolor="#a4d2f3"] ;
+13 -> 15 ;
+16 [label=<gini = 0.0<br/>samples = 216<br/>value = [216, 0]<br/>class = Not Joining>, fillcolor="#e58139"] ;
+0 -> 16 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+}

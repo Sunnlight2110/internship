@@ -1,0 +1,16 @@
+CART (Classification and Regression Trees)
+
+CART is a powerful algorithm for prediction using decision trees.
+Decision trees split parent nodes into child nodes based on features, aiming to minimize impurity (e.g., Gini impurity, entropy).
+Stopping Criteria:
+All dependent variables are exhausted.
+Criteria: minimum number of observations, maximum depth, or minimal reduction in impurity.
+Business Rules for Leaf Nodes:
+The final leaf nodes contain the decision (classification or regression result).
+Key Parameters for Decision Tree Classifier:
+
+Criterion: Measures the quality of splits (e.g., Gini impurity, entropy). Default: Gini.
+Max Depth: The maximum depth of the tree.
+Min Samples Split: Minimum samples required to split an internal node (can be an integer or percentage). Default: 2.
+Min Samples Leaf: Minimum samples required to be at a leaf node.
+Use case: Building a decision tree model on a credit rating dataset.

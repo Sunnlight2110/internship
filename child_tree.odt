@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="checkin_acc_A14 <= 0.5\ngini = 0.419\nsamples = 700\nvalue = [491.0, 209.0]", fillcolor="#f0b78d"] ;
+1 [label="duration <= 33.0\ngini = 0.484\nsamples = 425\nvalue = [251, 174]", fillcolor="#f7d8c2"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="amount <= 10975.5\ngini = 0.458\nsamples = 343\nvalue = [221, 122]", fillcolor="#f3c7a6"] ;
+1 -> 2 ;
+3 [label="gini = 0.451\nsamples = 337\nvalue = [221, 116]", fillcolor="#f3c3a1"] ;
+2 -> 3 ;
+4 [label="gini = 0.0\nsamples = 6\nvalue = [0, 6]", fillcolor="#399de5"] ;
+2 -> 4 ;
+5 [label="savings_acc_A65 <= 0.5\ngini = 0.464\nsamples = 82\nvalue = [30, 52]", fillcolor="#abd6f4"] ;
+1 -> 5 ;
+6 [label="gini = 0.431\nsamples = 70\nvalue = [22, 48]", fillcolor="#94caf1"] ;
+5 -> 6 ;
+7 [label="gini = 0.444\nsamples = 12\nvalue = [8, 4]", fillcolor="#f2c09c"] ;
+5 -> 7 ;
+8 [label="inst_plans_A143 <= 0.5\ngini = 0.222\nsamples = 275\nvalue = [240.0, 35.0]", fillcolor="#e99356"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="residing_since <= 2.5\ngini = 0.423\nsamples = 46\nvalue = [32, 14]", fillcolor="#f0b890"] ;
+8 -> 9 ;
+10 [label="gini = 0.491\nsamples = 23\nvalue = [13.0, 10.0]", fillcolor="#f9e2d1"] ;
+9 -> 10 ;
+11 [label="gini = 0.287\nsamples = 23\nvalue = [19, 4]", fillcolor="#ea9c63"] ;
+9 -> 11 ;
+12 [label="age <= 23.5\ngini = 0.167\nsamples = 229\nvalue = [208, 21]", fillcolor="#e88e4d"] ;
+8 -> 12 ;
+13 [label="gini = 0.48\nsamples = 15\nvalue = [9, 6]", fillcolor="#f6d5bd"] ;
+12 -> 13 ;
+14 [label="gini = 0.13\nsamples = 214\nvalue = [199.0, 15.0]", fillcolor="#e78a48"] ;
+12 -> 14 ;
+}

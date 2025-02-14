@@ -147,3 +147,4 @@ y_pred_df['predicted_using_cost'] = y_pred_df.predicted_prob.map(lambda x: 1 if 
 
 # Drawing the confusion matrix for the new predictions based on cost analysis
 draw_cm(y_pred_df.actual, y_pred_df.predicted_using_cost)
+
