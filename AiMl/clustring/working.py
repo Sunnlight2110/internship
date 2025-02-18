@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, AgglomerativeClustering
 from sklearn.preprocessing import StandardScaler
 
 customers_df = pd.read_csv('C:\\Users\\My PC\\Desktop\\Internship\\Machine Learning (Codes and Data Files)\\Data\\Income Data.csv')
@@ -108,17 +108,46 @@ customers_df['clusterid_new'] = clusters_new.labels_
 # ===================================================================   beer df
 beer_df = pd.read_csv('C:\\Users\\My PC\\Desktop\\Internship\\Machine Learning (Codes and Data Files)\\Data\\beer.csv')
 # print(beer_df)
-scaled_customer_df = scaler.fit_transform(beer_df[['calories','sodium','alcohol','cost']])
+scaled_beer_df = scaler.fit_transform(beer_df[['calories','sodium','alcohol','cost']])
 
 # drendrogram to visualize
 # camp = sns.cubehelix_palette(
 #     as_cmap=True, rot= -.3, light=1
 # )
 # sns.clustermap(
-#     scaled_customer_df,
+#     scaled_beer_df,
 #     cmap=camp, linewidths=.2,
 #     figsize=(8,8)
 # )
 # plt.show()
 # print(beer_df.iloc[[10,16]])
 
+# ===================================================================== Elbow curve method
+clusters_range = range(1,10)
+clusters_error = []
+for num_clusters in clusters_range:
+    clusters = KMeans(num_clusters)
+    clusters.fit(scaled_beer_df)
+    clusters_error.append(clusters.inertia_)
+
+# plt.figure(figsize=(6,4))
+# plt.plot(clusters_range, clusters_error, marker='o')
+# plt.show()
+
+# =======================================================================   Creating Cluster
+k = 3
+clusters = KMeans(k,random_state=42)
+clusters.fit(scaled_beer_df)
+beer_df['cluster_id'] = clusters.labels_
+
+# print(beer_df[beer_df.cluster_id == 0])
+# print(beer_df[beer_df.cluster_id == 1])
+# print(beer_df[beer_df.cluster_id == 2])
+
+# =======================================================================   Hierarchical clustering
+h_cluster = AgglomerativeClustering(3)
+h_cluster.fit(scaled_beer_df)
+beer_df['h_cluster_id'] = h_cluster.labels_
+print(beer_df[beer_df.h_cluster_id == 0])
+print(beer_df[beer_df.h_cluster_id == 1])
+print(beer_df[beer_df.h_cluster_id == 2])

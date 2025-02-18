@@ -1,0 +1,64 @@
+ACF (Autocorrelation Function)
+    The ACF measures the correlation of the time series with its lagged values. It helps in identifying the serial correlation present in the data at various lags.
+
+    Key Patterns and What They Mean:
+    Spike at Lag 1, Dying Quickly:
+        Interpretation: This suggests an AR(1) (Autoregressive process of order 1). The time series is dependent on its immediate previous value, and correlations drop off quickly as the lag increases.
+    Decay (Gradual Decrease):
+        Interpretation: This suggests an AR(p) process, where correlations gradually decrease with increasing lag. The longer the decay, the higher the value of p.
+
+    Sudden Drop After a Certain Lag:
+        Interpretation: This suggests MA(q) (Moving Average process of order q). After a specific lag, autocorrelation drops to zero. The lag at which the drop occurs is a good estimate for the value of q.
+    
+    Alternating Positive and Negative Spikes (with long tail):
+        Interpretation: This is a sign of a seasonal component in the data, where the series exhibits cyclical behavior, and you may need to consider SARIMA or seasonal ARIMA.
+    
+    No Significant Spikes (All values within the confidence interval):
+        Interpretation: This suggests no autocorrelation, meaning the data is likely white noise or the series is completely random.
+    Gradual Decay with Small Spikes:
+        Interpretation: This can imply mixed processes or a trend component that needs to be accounted for using differencing in ARIMA modeling.
+
+
+PACF (Partial Autocorrelation Function)
+    The PACF measures the partial correlation of the time series with its lagged values, controlling for the correlations at shorter lags. It helps in identifying the AR(p) order directly.
+
+    Key Patterns and What They Mean:
+    Significant Spike at Lag 1:
+        Interpretation: A single spike at Lag 1 with no other significant lags suggests an AR(1) process. It means the time series is only correlated with its immediate previous value.
+    
+    Significant Spikes at Multiple Lags:
+        Interpretation: Multiple significant spikes at specific lags (e.g., Lag 1, Lag 2, Lag 3) suggest an AR(p) process, where p is the number of significant lags.
+    
+    Cut-Off After a Certain Lag:
+        Interpretation: If the PACF shows a significant spike at a particular lag and then no further significant spikes, it suggests the AR order (p) is equal to that lag number. For example, if PACF cuts off after Lag 2, then you might have an AR(2) process.
+    
+    No Significant Spikes (All values within the confidence interval):
+        Interpretation: This suggests the absence of a strong AR component in the time series. It might indicate that the process is more moving average-based (MA) or a white noise series.
+    
+    A Cutoff with a Few Intermediate Spikes:
+        Interpretation: This suggests that the time series may have complex dependencies or trend components that need to be addressed.
+
+ACF + PACF for ARIMA Model Selection
+    For ARIMA, here's how you can use both ACF and PACF:
+    AR(p) (Autoregressive Process):
+        ACF: Shows slow decay.
+        PACF: Shows a sharp cutoff after lag p.
+    
+    MA(q) (Moving Average Process):
+        ACF: Shows a sharp cutoff after lag q.
+        PACF: Shows slow decay.
+    
+    ARMA(p, q) (Autoregressive Moving Average Process):
+        ACF: Decays slowly, but with some cutoff.
+        PACF: Has a sharp cutoff, but might show a few significant lags.
+    
+    Differencing for Stationarity:
+        ACF and PACF: If the series is non-stationary, you might see a slow decay in both ACF and PACF. After differencing the series, you should see either a sharp cutoff (suggesting AR or MA) or a slow decay (indicating ARMA).
+    
+    Seasonality:
+        ACF and PACF: In seasonal data, the ACF/PACF will show spikes at multiples of the seasonal period (e.g., every 12 months for monthly data). This indicates that you may need to consider seasonal components like SARIMA.
+Summary:
+    ACF shows the overall correlation structure of the data, and helps to identify MA components or seasonal patterns.
+    PACF helps to identify the AR components by isolating the effect of past lags.
+    Both graphs together give you clues on the ARIMA model’s order (p, d, q) by checking for decay patterns, cut-offs, and significant spikes.
+    
